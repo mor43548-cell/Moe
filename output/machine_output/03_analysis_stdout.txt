@@ -1,0 +1,42 @@
+=== 1. UNIFORMITY ===
+pooled  chi2=44.6270 df=36 p=0.153282 | KS D=0.0270 p=0.110448
+Y       chi2=861.6402 df=36 p=1.40153e-157 | KS D=0.6082 p=6.35106e-117
+T       chi2=350.6341 df=36 p=3.15291e-53 | KS D=0.4338 p=1.21614e-56
+W       chi2=292.8780 df=36 p=5.25528e-42 | KS D=0.3672 p=3.69616e-40
+E       chi2=219.3293 df=36 p=3.76385e-28 | KS D=0.2367 p=1.17761e-16
+R       chi2=276.8598 df=36 p=6.12237e-39 | KS D=0.2660 p=5.63772e-21
+Q       chi2=869.3110 df=36 p=3.51726e-159 | KS D=0.5663 p=7.13989e-100
+=== 2. INDEPENDENCE ===
+Y       max|acf|=0.1610 lags_outside=[6, 11] | updown runs=190 exp=189.67 p=0.96253 | median runs=144 exp=143.83 p=0.983455 | identical pairs=43 exp=32.05 p=0.050076
+T       max|acf|=0.1101 lags_outside=[11, 16] | updown runs=208 exp=206.33 p=0.82185 | median runs=150 exp=153.46 p=0.691452 | identical pairs=18 exp=18.29 p=1
+W       max|acf|=0.0949 lags_outside=[] | updown runs=219 exp=206.33 p=0.0870331 | median runs=157 exp=154.50 p=0.774861 | identical pairs=18 exp=16.73 p=0.706185
+E       max|acf|=0.1411 lags_outside=[10, 14, 16] | updown runs=205 exp=210.33 p=0.475464 | median runs=155 exp=156.99 p=0.821122 | identical pairs=12 exp=14.75 p=0.592608
+R       max|acf|=0.1375 lags_outside=[7, 14] | updown runs=218 exp=211.00 p=0.349718 | median runs=140 exp=157.37 p=0.0490132 | identical pairs=11 exp=16.30 p=0.203777
+Q       max|acf|=0.1148 lags_outside=[8] | updown runs=209 exp=190.33 p=0.00863475 | median runs=158 exp=150.12 p=0.360279 | identical pairs=42 exp=32.26 p=0.0775024
+stream  max|acf|=0.7289 lags_outside=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30] | updown runs=1309 exp=1311.67 p=0.886581 | median runs=944 exp=960.97 p=0.438355
+=== 3. ENTROPY ===
+pooled  H=5.193458 Hmax=5.209453 ratio=0.996930
+Y       H=3.669035 Hmax=5.209453 ratio=0.704303
+T       H=4.342126 Hmax=5.209453 ratio=0.833509
+W       H=4.442115 Hmax=5.209453 ratio=0.852703
+E       H=4.608076 Hmax=5.209453 ratio=0.884560
+R       H=4.516651 Hmax=5.209453 ratio=0.867011
+Q       H=3.775553 Hmax=5.209453 ratio=0.724750
+bits    H=0.981636 Hmax=1.000000 ratio=0.981636
+=== 4. NIST SP 800-22 (n=11808 bits, m=1 sequence) ===
+{"rule": "each number written as 6-bit unsigned binary of its own value (1 -> 000001, 37 -> 100101), row-major order", "n_bits": 11808, "ones": 4964, "ones_fraction": 0.4203929539295393, "ones_fraction_if_numbers_perfectly_uniform_1_37": 0.4189189189189189, "note": "A perfectly uniform 1..37 source does NOT give P(bit=1)=1/2 under fixed 6-bit encoding; the expected one-fraction is the value above."}
+Frequency (Monobit)                      status=FAIL            params={} p=['0.000000'] #p>=0.01=0/1 note=
+Block Frequency                          status=FAIL            params={'M': 128, 'N': 92} p=['0.000000'] #p>=0.01=0/1 note=
+Runs                                     status=FAIL            params={} p=['0.000000'] #p>=0.01=0/1 note=frequency pre-test failed (|pi-1/2|=0.07961 >= tau=0.01841); per spec 2.3.4(2) P-value = 0.0000
+Longest Run of Ones                      status=FAIL            params={'M': 128, 'K': 5, 'N': 92} p=['0.000000'] #p>=0.01=0/1 note=
+Binary Matrix Rank                       status=PASS            params={'M': 32, 'Q': 32, 'N': 11} p=['0.825591'] #p>=0.01=1/1 note=N=11 matrices < 38 recommended by SP 800-22 2.5.7
+Discrete Fourier Transform (Spectral)    status=FAIL            params={} p=['0.000000'] #p>=0.01=0/1 note=
+Non-overlapping Template Matching        status=FAIL            params={'m': 9, 'N': 8, 'M': 1476, 'templates': 148} p=['0.169717', '0.059647', '0.167524', '0.982799', '0.577391', '0.943524', '0.354903', '0.801901', '0.872195', '0.930098', '0.733874', '0.627905', '0.001343', '0.169717', '0.159248', '0.085524', '0.112010', '0.143487', '0.686859', '0.000557'] ... #p>=0.01=126/148 note=one P-value per aperiodic template
+Overlapping Template Matching            status=FAIL            params={'m': 9, 'M': 1032, 'N': 11, 'K': 5} p=['0.001755'] #p>=0.01=0/1 note=n=11808 < 10^6 recommended by SP 800-22 2.8.7 (N=11 blocks)
+Maurer's Universal Statistical           status=NOT APPLICABLE  params={} p=[] #p>=0.01=0/0 note=n=11808 < 387,840: SP 800-22 2.9.7 defines no (L,Q) below this length
+Linear Complexity                        status=PASS            params={'M': 500, 'N': 23} p=['0.275175'] #p>=0.01=1/1 note=N=23 blocks < 200 recommended by SP 800-22 2.10.7
+Serial                                   status=FAIL            params={'m': 10} p=['0.000000', '0.000000'] #p>=0.01=0/2 note=P-value1 (del psi^2), P-value2 (del^2 psi^2)
+Approximate Entropy                      status=FAIL            params={'m': 7} p=['0.000000'] #p>=0.01=0/1 note=
+Cumulative Sums (Cusum)                  status=FAIL            params={} p=['0.000000', '0.000000'] #p>=0.01=0/2 note=forward, reverse
+Random Excursions                        status=NOT APPLICABLE  params={'J': 19} p=[] #p>=0.01=0/0 note=J=19 cycles < 500: per SP 800-22 2.14.4(6)/2.14.7 the test is not applied
+Random Excursions Variant                status=NOT APPLICABLE  params={'J': 19} p=[] #p>=0.01=0/0 note=J=19 cycles < 500: per SP 800-22 2.15.4(5)/2.15.7 the test is not applied

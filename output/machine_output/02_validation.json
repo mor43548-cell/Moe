@@ -1,0 +1,374 @@
+[
+  {
+    "case": "2.1.4 Frequency eps=1011010101",
+    "computed": 0.527089,
+    "reference": 0.527089,
+    "match": true
+  },
+  {
+    "case": "2.1.8 Frequency pi-100",
+    "computed": 0.109599,
+    "reference": 0.109599,
+    "match": true
+  },
+  {
+    "case": "2.2.4 BlockFreq eps=0110011010 M=3",
+    "computed": 0.801252,
+    "reference": 0.801252,
+    "match": true
+  },
+  {
+    "case": "2.2.8 BlockFreq pi-100 M=10",
+    "computed": 0.706438,
+    "reference": 0.706438,
+    "match": true
+  },
+  {
+    "case": "2.3.4 Runs eps=1001101011",
+    "computed": 0.147232,
+    "reference": 0.147232,
+    "match": true
+  },
+  {
+    "case": "2.3.8 Runs pi-100",
+    "computed": 0.500798,
+    "reference": 0.500798,
+    "match": true
+  },
+  {
+    "case": "2.4.8 LongestRun 128-bit example",
+    "computed": 0.180598,
+    "reference": 0.180609,
+    "match": true
+  },
+  {
+    "case": "2.6.4 DFT eps=1001010011 (printed example)",
+    "computed": 0.46816,
+    "reference": 0.029523,
+    "match": false
+  },
+  {
+    "case": "2.6.8 DFT pi-100 (printed example)",
+    "computed": 0.646355,
+    "reference": 0.168669,
+    "match": false
+  },
+  {
+    "case": "2.7.4 NonOverlapping eps=10100100101110010110 B=001 N=2",
+    "computed": 0.344154,
+    "reference": 0.344154,
+    "match": true
+  },
+  {
+    "case": "2.11.4 Serial eps=0011011101 m=3 P1",
+    "computed": 0.808792,
+    "reference": 0.808792,
+    "match": true
+  },
+  {
+    "case": "2.11.4 Serial eps=0011011101 m=3 P2",
+    "computed": 0.67032,
+    "reference": 0.67032,
+    "match": true
+  },
+  {
+    "case": "2.12.4 ApEn eps=0100110101 m=3",
+    "computed": 0.261961,
+    "reference": 0.261961,
+    "match": true
+  },
+  {
+    "case": "2.12.8 ApEn pi-100 m=2",
+    "computed": 0.235301,
+    "reference": 0.235301,
+    "match": true
+  },
+  {
+    "case": "2.13.4 Cusum eps=1011010111 forward",
+    "computed": 0.411659,
+    "reference": 0.4116588,
+    "match": true
+  },
+  {
+    "case": "2.13.8 Cusum pi-100 forward",
+    "computed": 0.219194,
+    "reference": 0.219194,
+    "match": true
+  },
+  {
+    "case": "2.13.8 Cusum pi-100 reverse",
+    "computed": 0.114866,
+    "reference": 0.114866,
+    "match": true
+  },
+  {
+    "case": "number of aperiodic templates m=9 (STS: 148)",
+    "computed": 148,
+    "reference": 148,
+    "match": true
+  },
+  {
+    "case": "e Frequency",
+    "computed": 0.953749,
+    "reference": 0.953749,
+    "match": true
+  },
+  {
+    "case": "e Block Frequency M=128",
+    "computed": 0.211072,
+    "reference": 0.211072,
+    "match": true
+  },
+  {
+    "case": "e Runs",
+    "computed": 0.561917,
+    "reference": 0.561917,
+    "match": true
+  },
+  {
+    "case": "e Longest Run M=10^4",
+    "computed": 0.718945,
+    "reference": 0.718945,
+    "match": true
+  },
+  {
+    "case": "e Binary Matrix Rank",
+    "computed": 0.306156,
+    "reference": 0.306156,
+    "match": true
+  },
+  {
+    "case": "e DFT (full-length reference)",
+    "computed": 0.847187,
+    "reference": 0.847187,
+    "match": true
+  },
+  {
+    "case": "e Overlapping Template m=9: block counts v (spec 2.8.8)",
+    "computed": "[329, 164, 150, 111, 78, 136]",
+    "reference": "[329, 164, 150, 111, 78, 136]",
+    "match": true
+  },
+  {
+    "case": "e Overlapping Template m=9, with the pi printed in the 2.8.8 example",
+    "computed": 0.110431,
+    "reference": 0.110434,
+    "match": true
+  },
+  {
+    "case": "e Overlapping Template m=9, STS 2.1.2 corrected pi (used for the data)",
+    "computed": 0.159027,
+    "reference": "n/a (spec example predates the corrected pi)",
+    "match": null
+  },
+  {
+    "case": "e Universal L=7 Q=1280",
+    "computed": 0.282568,
+    "reference": 0.282568,
+    "match": true
+  },
+  {
+    "case": "e Linear Complexity M=1000",
+    "computed": 0.845406,
+    "reference": 0.845406,
+    "match": true
+  },
+  {
+    "case": "e Serial m=2 P1",
+    "computed": 0.843764,
+    "reference": 0.843764,
+    "match": true
+  },
+  {
+    "case": "e Serial m=2 P2",
+    "computed": 0.561915,
+    "reference": 0.561915,
+    "match": true
+  },
+  {
+    "case": "e Approximate Entropy m=10",
+    "computed": 0.700073,
+    "reference": 0.700073,
+    "match": true
+  },
+  {
+    "case": "e Cusum forward",
+    "computed": 0.669886,
+    "reference": 0.669887,
+    "match": true
+  },
+  {
+    "case": "e Cusum reverse",
+    "computed": 0.724265,
+    "reference": 0.724266,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions J (cycles)",
+    "computed": 1490,
+    "reference": 1490,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions x=-4",
+    "computed": 0.573306,
+    "reference": 0.573306,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions x=-3",
+    "computed": 0.197996,
+    "reference": 0.197996,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions x=-2",
+    "computed": 0.164011,
+    "reference": 0.164011,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions x=-1",
+    "computed": 0.007779,
+    "reference": 0.007779,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions x=+1",
+    "computed": 0.786868,
+    "reference": 0.786868,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions x=+2",
+    "computed": 0.440912,
+    "reference": 0.440912,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions x=+3",
+    "computed": 0.797854,
+    "reference": 0.797854,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions x=+4",
+    "computed": 0.778186,
+    "reference": 0.778186,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=-9",
+    "computed": 0.858946,
+    "reference": 0.858946,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=-8",
+    "computed": 0.794755,
+    "reference": 0.794755,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=-7",
+    "computed": 0.576249,
+    "reference": 0.576249,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=-6",
+    "computed": 0.493417,
+    "reference": 0.493417,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=-5",
+    "computed": 0.633873,
+    "reference": 0.633873,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=-4",
+    "computed": 0.917283,
+    "reference": 0.917283,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=-3",
+    "computed": 0.934708,
+    "reference": 0.934708,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=-2",
+    "computed": 0.816012,
+    "reference": 0.816012,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=-1",
+    "computed": 0.826009,
+    "reference": 0.826009,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=+1",
+    "computed": 0.137861,
+    "reference": 0.137861,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=+2",
+    "computed": 0.200642,
+    "reference": 0.200642,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=+3",
+    "computed": 0.441254,
+    "reference": 0.441254,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=+4",
+    "computed": 0.939291,
+    "reference": 0.939291,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=+5",
+    "computed": 0.505683,
+    "reference": 0.505683,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=+6",
+    "computed": 0.445935,
+    "reference": 0.445935,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=+7",
+    "computed": 0.512207,
+    "reference": 0.512207,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=+8",
+    "computed": 0.538635,
+    "reference": 0.538635,
+    "match": true
+  },
+  {
+    "case": "e Random Excursions Variant x=+9",
+    "computed": 0.59393,
+    "reference": 0.59393,
+    "match": true
+  },
+  {
+    "case": "e Non-overlapping B=000000001 (first 10^6 bits)",
+    "computed": 0.07879,
+    "reference": 0.07879,
+    "match": true
+  }
+]

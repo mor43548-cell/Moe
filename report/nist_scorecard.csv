@@ -1,0 +1,16 @@
+test,params,p_value,n_subtests,n_ge_001,n_gt_005,proportion,status,note
+Frequency (Monobit),{},4.63e-67,1,0,0,0/1,FAIL,
+Block Frequency,"{""M"": 128, ""N"": 92}",2.83e-33,1,0,0,0/1,FAIL,
+Runs,{},0.00e+00,1,0,0,0/1,FAIL,frequency pre-test failed (|pi-1/2|=0.07961 >= tau=0.01841); per spec 2.3.4(2) P-value = 0.0000
+Longest Run of Ones,"{""M"": 128, ""K"": 5, ""N"": 92}",3.32e-45,1,0,0,0/1,FAIL,
+Binary Matrix Rank,"{""M"": 32, ""Q"": 32, ""N"": 11}",0.8256,1,1,1,1/1,PASS,N=11 matrices < 38 recommended by SP 800-22 2.5.7
+Discrete Fourier Transform (Spectral),{},2.90e-18,1,0,0,0/1,FAIL,
+Non-overlapping Template Matching,"{""m"": 9, ""N"": 8, ""M"": 1476, ""templates"": 148}",min 1.39e-08,148,126,116,0/1,FAIL,one P-value per aperiodic template
+Overlapping Template Matching,"{""m"": 9, ""M"": 1032, ""N"": 11, ""K"": 5}",0.0018,1,0,0,0/1,FAIL,n=11808 < 10^6 recommended by SP 800-22 2.8.7 (N=11 blocks)
+Maurer's Universal Statistical,{},—,0,0,0,—,NOT APPLICABLE,"n=11808 < 387,840: SP 800-22 2.9.7 defines no (L,Q) below this length"
+Linear Complexity,"{""M"": 500, ""N"": 23}",0.2752,1,1,1,1/1,PASS,N=23 blocks < 200 recommended by SP 800-22 2.10.7
+Serial,"{""m"": 10}",min 2.38e-115,2,0,0,0/1,FAIL,"P-value1 (del psi^2), P-value2 (del^2 psi^2)"
+Approximate Entropy,"{""m"": 7}",1.91e-120,1,0,0,0/1,FAIL,
+Cumulative Sums (Cusum),{},min 1.04e-67,2,0,0,0/1,FAIL,"forward, reverse"
+Random Excursions,"{""J"": 19}",—,0,0,0,—,NOT APPLICABLE,J=19 cycles < 500: per SP 800-22 2.14.4(6)/2.14.7 the test is not applied
+Random Excursions Variant,"{""J"": 19}",—,0,0,0,—,NOT APPLICABLE,J=19 cycles < 500: per SP 800-22 2.15.4(5)/2.15.7 the test is not applied

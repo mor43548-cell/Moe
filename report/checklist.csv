@@ -1,0 +1,75 @@
+section,item,threshold,measured,status,note
+1. אחידות (Uniformity),"מבחן תדירות χ² — כל 1,968 המספרים (1..37)",p > 0.05,"χ²=44.627, df=36, p=0.1533",PASS,
+1. אחידות (Uniformity),"מבחן KS (בדיד) — כל 1,968 המספרים",p > 0.05,"D=0.0270, p=0.1104",PASS,
+1. אחידות (Uniformity),מבחן תדירות χ² — עמודה Y,p > 0.05,"χ²=861.6, p=1.40e-157",FAIL,כל עמודה היא מקום קבוע ברשימה ממוינת (ראו §מבנה הנתונים)
+1. אחידות (Uniformity),מבחן KS — עמודה Y,p > 0.05,"D=0.6082, p=6.35e-117",FAIL,
+1. אחידות (Uniformity),מבחן תדירות χ² — עמודה T,p > 0.05,"χ²=350.6, p=3.15e-53",FAIL,כל עמודה היא מקום קבוע ברשימה ממוינת (ראו §מבנה הנתונים)
+1. אחידות (Uniformity),מבחן KS — עמודה T,p > 0.05,"D=0.4338, p=1.22e-56",FAIL,
+1. אחידות (Uniformity),מבחן תדירות χ² — עמודה W,p > 0.05,"χ²=292.9, p=5.26e-42",FAIL,כל עמודה היא מקום קבוע ברשימה ממוינת (ראו §מבנה הנתונים)
+1. אחידות (Uniformity),מבחן KS — עמודה W,p > 0.05,"D=0.3672, p=3.70e-40",FAIL,
+1. אחידות (Uniformity),מבחן תדירות χ² — עמודה E,p > 0.05,"χ²=219.3, p=3.76e-28",FAIL,כל עמודה היא מקום קבוע ברשימה ממוינת (ראו §מבנה הנתונים)
+1. אחידות (Uniformity),מבחן KS — עמודה E,p > 0.05,"D=0.2367, p=1.18e-16",FAIL,
+1. אחידות (Uniformity),מבחן תדירות χ² — עמודה R,p > 0.05,"χ²=276.9, p=6.12e-39",FAIL,כל עמודה היא מקום קבוע ברשימה ממוינת (ראו §מבנה הנתונים)
+1. אחידות (Uniformity),מבחן KS — עמודה R,p > 0.05,"D=0.2660, p=5.64e-21",FAIL,
+1. אחידות (Uniformity),מבחן תדירות χ² — עמודה Q,p > 0.05,"χ²=869.3, p=3.52e-159",FAIL,כל עמודה היא מקום קבוע ברשימה ממוינת (ראו §מבנה הנתונים)
+1. אחידות (Uniformity),מבחן KS — עמודה Q,p > 0.05,"D=0.5663, p=7.14e-100",FAIL,
+1. אחידות (Uniformity),NIST Frequency (Monobit),p > 0.01 (שאיפה > 0.05); Proportion ≈ 0.99; PASS,"p=4.63e-67, Proportion=0/1",FAIL,
+1. אחידות (Uniformity),NIST Block Frequency,p > 0.01 (שאיפה > 0.05); Proportion ≈ 0.99; PASS,"p=2.83e-33, Proportion=0/1",FAIL,
+1. אחידות (Uniformity),היסטוגרמת תדרים (ויזואלי),עמודות שטוחות יחסית סביב הצפי,"2/37 עמודות מחוץ לרצועת ±1.96σ (מספרים 12, 21); טווח 39–72 מול צפי 53.19",N/A,סף ויזואלי — מוצג בגרף 1 ללא הכרעה מספרית
+2. אי-תלות (Independence),אוטו-קורלציה — עמודה Y (lags 1–20),"מקדמים ≈ 0, בתוך ±1.96/√n","max|r|=0.161; מחוץ לרצועה: [6, 11]",FAIL,
+2. אי-תלות (Independence),אוטו-קורלציה — עמודה T (lags 1–20),"מקדמים ≈ 0, בתוך ±1.96/√n","max|r|=0.110; מחוץ לרצועה: [11, 16]",FAIL,
+2. אי-תלות (Independence),אוטו-קורלציה — עמודה W (lags 1–20),"מקדמים ≈ 0, בתוך ±1.96/√n",max|r|=0.095; מחוץ לרצועה: אין,PASS,
+2. אי-תלות (Independence),אוטו-קורלציה — עמודה E (lags 1–20),"מקדמים ≈ 0, בתוך ±1.96/√n","max|r|=0.141; מחוץ לרצועה: [10, 14, 16]",FAIL,
+2. אי-תלות (Independence),אוטו-קורלציה — עמודה R (lags 1–20),"מקדמים ≈ 0, בתוך ±1.96/√n","max|r|=0.137; מחוץ לרצועה: [7, 14]",FAIL,
+2. אי-תלות (Independence),אוטו-קורלציה — עמודה Q (lags 1–20),"מקדמים ≈ 0, בתוך ±1.96/√n",max|r|=0.115; מחוץ לרצועה: [8],FAIL,
+2. אי-תלות (Independence),אוטו-קורלציה — רצף שורה-אחר-שורה (lags 1–30),"מקדמים ≈ 0, בתוך ±1.96/√n",max|r|=0.729; 30/30 מחוץ לרצועה,FAIL,נובע מהמיון בתוך כל שורה
+2. אי-תלות (Independence),מבחן רצפים — עליות/ירידות — עמודה Y,p > 0.05,"runs=190 (צפי 189.7), p=0.9625",PASS,
+2. אי-תלות (Independence),מבחן רצפים — מעל/מתחת לחציון — עמודה Y,p > 0.05,"runs=144 (צפי 143.8), p=0.9835",PASS,
+2. אי-תלות (Independence),רצפים של ערכים זהים עוקבים — עמודה Y,p > 0.05,"זוגות=43 (צפי 32.1), p=0.0501",PASS,
+2. אי-תלות (Independence),מבחן רצפים — עליות/ירידות — עמודה T,p > 0.05,"runs=208 (צפי 206.3), p=0.8219",PASS,
+2. אי-תלות (Independence),מבחן רצפים — מעל/מתחת לחציון — עמודה T,p > 0.05,"runs=150 (צפי 153.5), p=0.6915",PASS,
+2. אי-תלות (Independence),רצפים של ערכים זהים עוקבים — עמודה T,p > 0.05,"זוגות=18 (צפי 18.3), p=1.0000",PASS,
+2. אי-תלות (Independence),מבחן רצפים — עליות/ירידות — עמודה W,p > 0.05,"runs=219 (צפי 206.3), p=0.0870",PASS,
+2. אי-תלות (Independence),מבחן רצפים — מעל/מתחת לחציון — עמודה W,p > 0.05,"runs=157 (צפי 154.5), p=0.7749",PASS,
+2. אי-תלות (Independence),רצפים של ערכים זהים עוקבים — עמודה W,p > 0.05,"זוגות=18 (צפי 16.7), p=0.7062",PASS,
+2. אי-תלות (Independence),מבחן רצפים — עליות/ירידות — עמודה E,p > 0.05,"runs=205 (צפי 210.3), p=0.4755",PASS,
+2. אי-תלות (Independence),מבחן רצפים — מעל/מתחת לחציון — עמודה E,p > 0.05,"runs=155 (צפי 157.0), p=0.8211",PASS,
+2. אי-תלות (Independence),רצפים של ערכים זהים עוקבים — עמודה E,p > 0.05,"זוגות=12 (צפי 14.7), p=0.5926",PASS,
+2. אי-תלות (Independence),מבחן רצפים — עליות/ירידות — עמודה R,p > 0.05,"runs=218 (צפי 211.0), p=0.3497",PASS,
+2. אי-תלות (Independence),מבחן רצפים — מעל/מתחת לחציון — עמודה R,p > 0.05,"runs=140 (צפי 157.4), p=0.0490",FAIL,
+2. אי-תלות (Independence),רצפים של ערכים זהים עוקבים — עמודה R,p > 0.05,"זוגות=11 (צפי 16.3), p=0.2038",PASS,
+2. אי-תלות (Independence),מבחן רצפים — עליות/ירידות — עמודה Q,p > 0.05,"runs=209 (צפי 190.3), p=0.0086",FAIL,
+2. אי-תלות (Independence),מבחן רצפים — מעל/מתחת לחציון — עמודה Q,p > 0.05,"runs=158 (צפי 150.1), p=0.3603",PASS,
+2. אי-תלות (Independence),רצפים של ערכים זהים עוקבים — עמודה Q,p > 0.05,"זוגות=42 (צפי 32.3), p=0.0775",PASS,
+2. אי-תלות (Independence),מבחן רצפים — עליות/ירידות — רצף שורה-אחר-שורה,p > 0.05,"runs=1309 (צפי 1311.7), p=0.8866",PASS,
+2. אי-תלות (Independence),מבחן רצפים — מעל/מתחת לחציון — רצף שורה-אחר-שורה,p > 0.05,"runs=944 (צפי 961.0), p=0.4384",PASS,
+2. אי-תלות (Independence),NIST Runs,p > 0.05 / > 0.01; Proportion ≈ 0.99; PASS,"p=0.00e+00, Proportion=0/1",FAIL,frequency pre-test failed (|pi-1/2|=0.07961 >= tau=0.01841); per spec 2.3.4(2) P-value = 0.0000
+2. אי-תלות (Independence),NIST Longest Run of Ones,p > 0.05 / > 0.01; Proportion ≈ 0.99; PASS,"p=3.32e-45, Proportion=0/1",FAIL,
+2. אי-תלות (Independence),NIST Random Excursions,p > 0.05 / > 0.01; Proportion ≈ 0.99; PASS,NOT APPLICABLE,N/A,J=19 cycles < 500: per SP 800-22 2.14.4(6)/2.14.7 the test is not applied
+2. אי-תלות (Independence),NIST Random Excursions Variant,p > 0.05 / > 0.01; Proportion ≈ 0.99; PASS,NOT APPLICABLE,N/A,J=19 cycles < 500: per SP 800-22 2.15.4(5)/2.15.7 the test is not applied
+3. אנטרופיה (Entropy),"אנטרופיית שאנון — כל 1,968 המספרים",≥ 99.9% מ-log₂37,H=5.19346 / 5.20945 = 99.693%,FAIL,"לשם השוואה: התוחלת המקורבת (Miller–Madow) למקור אחיד מושלם ב-n=1,968 היא 99.747%"
+3. אנטרופיה (Entropy),אנטרופיית שאנון — עמודה Y,≥ 99.9% מ-log₂37,70.43%,FAIL,
+3. אנטרופיה (Entropy),אנטרופיית שאנון — עמודה T,≥ 99.9% מ-log₂37,83.35%,FAIL,
+3. אנטרופיה (Entropy),אנטרופיית שאנון — עמודה W,≥ 99.9% מ-log₂37,85.27%,FAIL,
+3. אנטרופיה (Entropy),אנטרופיית שאנון — עמודה E,≥ 99.9% מ-log₂37,88.46%,FAIL,
+3. אנטרופיה (Entropy),אנטרופיית שאנון — עמודה R,≥ 99.9% מ-log₂37,86.70%,FAIL,
+3. אנטרופיה (Entropy),אנטרופיית שאנון — עמודה Q,≥ 99.9% מ-log₂37,72.48%,FAIL,
+3. אנטרופיה (Entropy),"אנטרופיית שאנון — רצף הביטים (11,808)",≥ 0.999 (ביטים),0.98164,FAIL,תחת קידוד 6 ביט של מקור 1..37 אחיד מושלם התוחלת היא 0.98095
+3. אנטרופיה (Entropy),NIST Maurer's Universal Statistical,p > 0.01; Proportion ≈ 0.99; PASS,NOT APPLICABLE,N/A,"n=11808 < 387,840: SP 800-22 2.9.7 defines no (L,Q) below this length"
+3. אנטרופיה (Entropy),NIST Approximate Entropy,p > 0.01; Proportion ≈ 0.99; PASS,"p=1.91e-120, Proportion=0/1",FAIL,
+4. סוללת NIST SP 800-22,NIST Frequency (Monobit),כל p ≥ 0.01; PASS,min p=4.63e-67; 0/1 ערכי p ≥ 0.01,FAIL,
+4. סוללת NIST SP 800-22,NIST Block Frequency,כל p ≥ 0.01; PASS,min p=2.83e-33; 0/1 ערכי p ≥ 0.01,FAIL,
+4. סוללת NIST SP 800-22,NIST Runs,כל p ≥ 0.01; PASS,min p=0.00e+00; 0/1 ערכי p ≥ 0.01,FAIL,frequency pre-test failed (|pi-1/2|=0.07961 >= tau=0.01841); per spec 2.3.4(2) P-value = 0.0000
+4. סוללת NIST SP 800-22,NIST Longest Run of Ones,כל p ≥ 0.01; PASS,min p=3.32e-45; 0/1 ערכי p ≥ 0.01,FAIL,
+4. סוללת NIST SP 800-22,NIST Binary Matrix Rank,כל p ≥ 0.01; PASS,min p=0.8256; 1/1 ערכי p ≥ 0.01,PASS,N=11 matrices < 38 recommended by SP 800-22 2.5.7
+4. סוללת NIST SP 800-22,NIST Discrete Fourier Transform (Spectral),כל p ≥ 0.01; PASS,min p=2.90e-18; 0/1 ערכי p ≥ 0.01,FAIL,
+4. סוללת NIST SP 800-22,NIST Non-overlapping Template Matching,כל p ≥ 0.01; PASS,min p=1.39e-08; 126/148 ערכי p ≥ 0.01,FAIL,one P-value per aperiodic template
+4. סוללת NIST SP 800-22,NIST Overlapping Template Matching,כל p ≥ 0.01; PASS,min p=0.0018; 0/1 ערכי p ≥ 0.01,FAIL,n=11808 < 10^6 recommended by SP 800-22 2.8.7 (N=11 blocks)
+4. סוללת NIST SP 800-22,NIST Maurer's Universal Statistical,כל p ≥ 0.01; PASS,NOT APPLICABLE,N/A,"n=11808 < 387,840: SP 800-22 2.9.7 defines no (L,Q) below this length"
+4. סוללת NIST SP 800-22,NIST Linear Complexity,כל p ≥ 0.01; PASS,min p=0.2752; 1/1 ערכי p ≥ 0.01,PASS,N=23 blocks < 200 recommended by SP 800-22 2.10.7
+4. סוללת NIST SP 800-22,NIST Serial,כל p ≥ 0.01; PASS,min p=2.38e-115; 0/2 ערכי p ≥ 0.01,FAIL,"P-value1 (del psi^2), P-value2 (del^2 psi^2)"
+4. סוללת NIST SP 800-22,NIST Approximate Entropy,כל p ≥ 0.01; PASS,min p=1.91e-120; 0/1 ערכי p ≥ 0.01,FAIL,
+4. סוללת NIST SP 800-22,NIST Cumulative Sums (Cusum),כל p ≥ 0.01; PASS,min p=1.04e-67; 0/2 ערכי p ≥ 0.01,FAIL,"forward, reverse"
+4. סוללת NIST SP 800-22,NIST Random Excursions,כל p ≥ 0.01; PASS,NOT APPLICABLE,N/A,J=19 cycles < 500: per SP 800-22 2.14.4(6)/2.14.7 the test is not applied
+4. סוללת NIST SP 800-22,NIST Random Excursions Variant,כל p ≥ 0.01; PASS,NOT APPLICABLE,N/A,J=19 cycles < 500: per SP 800-22 2.15.4(5)/2.15.7 the test is not applied
+4. סוללת NIST SP 800-22,עמידה ב-100% (15/15) מהסוללה,15/15 PASS,2 PASS · 10 FAIL · 3 NOT APPLICABLE,FAIL,
