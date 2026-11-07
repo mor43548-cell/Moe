@@ -1,10 +1,9 @@
 Draws: 328; main numbers pooled: 1968; strong numbers: 328
-Monte Carlo check of the chi-square scale: mean X² under H0 = 30.928 (theory 36*31/36 = 31.000); adjusted-asymptotic vs MC 95th percentile: 43.915 vs 43.875
 
 === 1. UNIFORMITY ===
-                   variable    n  k  expected_per_value  min_count  max_count      chi2  df  p_chi2_primary  p_chi2_unadjusted  p_chi2_MC     KS_D  p_KS_MC
-Main numbers pooled (1..37) 1968 37           53.189189         39         72 44.627033  36        0.042552           0.153282   0.042598 0.027041 0.043698
-       Strong number (1..7)  328  7           46.857143         38         60  8.085366   6        0.231916           0.231916   0.229689 0.037892 0.392530
+                   variable    n  k  expected_per_value  min_count  max_count      chi2  df  p_chi2_primary  p_chi2_unadjusted     KS_D     p_KS
+Main numbers pooled (1..37) 1968 37           53.189189         39         72 44.627033  36        0.042552           0.153282 0.027041 0.110448
+       Strong number (1..7)  328  7           46.857143         38         60  8.085366   6        0.231916           0.231916 0.037892 0.719210
  block   draws  p_main_chi2  p_strong_chi2
      1    1-41     0.649319       0.509891
      2   42-82     0.838660       0.192211

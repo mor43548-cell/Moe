@@ -39,11 +39,11 @@ P = S["nist"]
 
 CL = [
  ("1. Uniformity", "Frequency test χ², main numbers pooled (1..37, n=1968)", "p > 0.01 (aim > 0.05)",
-  f"p = {f(um.p_chi2_primary)} (adjusted, primary); MC p = {f(um.p_chi2_MC)}; unadjusted p = {f(um.p_chi2_unadjusted)}",
+  f"p = {f(um.p_chi2_primary)} (adjusted, primary); unadjusted p = {f(um.p_chi2_unadjusted)}",
   "above 0.01, below the 0.05 aim", st(um.p_chi2_primary > 0.01)),
  ("1. Uniformity", "Frequency test χ², strong number (1..7, n=328)", "p > 0.01 (aim > 0.05)", f"p = {f(us.p_chi2_primary)}", "", st(us.p_chi2_primary > 0.01)),
- ("1. Uniformity", "KS (discrete), main numbers pooled", "p > 0.01 (aim > 0.05)", f"D = {f(um.KS_D)}, MC p = {f(um.p_KS_MC)}", "above 0.01, below the 0.05 aim", st(um.p_KS_MC > 0.01)),
- ("1. Uniformity", "KS (discrete), strong number", "p > 0.01 (aim > 0.05)", f"D = {f(us.KS_D)}, MC p = {f(us.p_KS_MC)}", "", st(us.p_KS_MC > 0.01)),
+ ("1. Uniformity", "KS (discrete), main numbers pooled", "p > 0.01 (aim > 0.05)", f"D = {f(um.KS_D)}, p = {f(um.p_KS)}", "above 0.01, below the 0.05 aim", st(um.p_KS > 0.01)),
+ ("1. Uniformity", "KS (discrete), strong number", "p > 0.01 (aim > 0.05)", f"D = {f(us.KS_D)}, p = {f(us.p_KS)}", "", st(us.p_KS > 0.01)),
  ("1. Uniformity", "Proportion of the 8 blocks (41 draws each) passing χ²", f"~0.99 (NIST interval m=8: ≥ {lb8:.4f})",
   f"main {S['prop_main']:.4f}; strong {S['prop_strong']:.4f}", "", st(S['prop_main'] >= lb8 and S['prop_strong'] >= lb8)),
  ("1. Uniformity", "NIST Frequency", "p > 0.01, proportion ~0.99", nl("Frequency"), "", T.loc["Frequency"].status),
@@ -113,7 +113,7 @@ he = f"""
 <p><b>השערה שנבדקה (H0):</b> כל שורה היא הגרלת לוטו 6/37 עם מספר חזק. ששת המספרים הם תת-קבוצה אקראית אחידה של {{1..37}} ונשמרים ממוינים. המספר החזק אחיד על {{1..7}}. ההגרלות בלתי תלויות זו בזו. מערך המבחנים והספים זהה לבקשה ולגרסה 1, ותכנון המחקר נרשם ונשמר בגיט <u>לפני</u> הרצת המבחנים (נספח A).</p>
 <p><b>תשובה לקריטריון "מעבר של 100% ממבחני האקראיות": לא מתקיים.</b> התמונה שונה מאוד מגרסה 1, ויש לקרוא אותה במלואה:</p>
 <ul>
-<li><b>אחידות:</b> χ² על 1,968 המספרים הראשיים יחד: p={f(um.p_chi2_primary)} (Monte Carlo: {f(um.p_chi2_MC)}). הערך גבוה מסף החובה 0.01, ונמוך מהשאיפה של 0.05. KS (Monte Carlo): p={f(um.p_KS_MC)}, אותו מצב. המספר החזק: χ² p={f(us.p_chi2_primary)}. יחס המעבר על 8 בלוקים הוא 1.0000 גם במספרים הראשיים וגם במספר החזק.</li>
+<li><b>אחידות:</b> χ² על 1,968 המספרים הראשיים יחד: p={f(um.p_chi2_primary)}. הערך גבוה מסף החובה 0.01, ונמוך מהשאיפה של 0.05. KS: p={f(um.p_KS)}. המספר החזק: χ² p={f(us.p_chi2_primary)}. יחס המעבר על 8 בלוקים הוא 1.0000 גם במספרים הראשיים וגם במספר החזק.</li>
 <li><b>אי-תלות:</b> ‏2 כישלונות מתוך 14 מבחני רצפים בסף 0.05: {', '.join(ud_bad)} ברצפי עלייה/ירידה, ו-{', '.join(md_bad)} ברצפים מעל/מתחת לחציון. {tot_out} מתוך 140 מקדמי אוטו-קורלציה מחוץ לרצועת 95%, כשבמקרה צפויים כ-7. ‏|r| המרבי הוא {ind.max_abs_acf.max():.3f}.</li>
 <li><b>אנטרופיה:</b> במספרים הראשיים {E.iloc[0].ratio:.5f}, ובמספר החזק {E.iloc[1].ratio:.5f}. שניהם מתחת לסף 99.9%, אבל קרובים לערך שצפוי תחת H0 במדגם בגודל הזה ({E.iloc[0].ref_expected_ratio_if_H0:.5f} ו-{E.iloc[1].ref_expected_ratio_if_H0:.5f}). ברצף הביטים: {E.iloc[2].ratio:.5f}, עובר.</li>
 <li><b>NIST SP 800-22:</b> ‏PASS {P['PASS']}/15, FAIL {P['FAIL']}/15, N/A {P['N/A']}/15. הכישלון היחיד הוא DFT, ש-p שלו {T.loc['DFT'].p_values} (גבוה מ-0.05). הוא מסומן FAIL רק משום שאף בלוק אינו ארוך מספיק כדי לחשב יחס מעבר, וכלל הסטטוס שנקבע מראש דורש יחס כזה. לא שיניתי את הכלל אחרי שראיתי את התוצאה. ששה מבחנים לא ניתנים להרצה באורך של {S['stream_bits']:,} ביטים.</li>

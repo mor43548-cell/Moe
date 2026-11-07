@@ -39,3 +39,8 @@ because no closed form exists for lotto sampling. Monte Carlo: 20,000 replicates
 - Entropy ≥ 99.9% of maximum.
 - Correlogram: every lag 1..20 inside ±1.96/√N.
 - Battery: 15/15 PASS.
+
+## Amendment (after the requester's review): Monte Carlo removed
+The Monte Carlo p-values (20,000 simulated fair draws, seed 20261107) were an addition the request did not call for. They are removed.
+KS p-value: continuous Kolmogorov distribution (conservative for discrete data), the same as v1. No simulated data is used anywhere in v2.
+No other test, threshold or encoding was changed.

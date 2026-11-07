@@ -1,8 +1,8 @@
 checked,section,item,required threshold,observed (machine output),note,status
-✔,1. Uniformity,"Frequency test χ², main numbers pooled (1..37, n=1968)",p > 0.01 (aim > 0.05),"p = 0.0426 (adjusted, primary); MC p = 0.0426; unadjusted p = 0.1533","above 0.01, below the 0.05 aim",PASS
+✔,1. Uniformity,"Frequency test χ², main numbers pooled (1..37, n=1968)",p > 0.01 (aim > 0.05),"p = 0.0426 (adjusted, primary); unadjusted p = 0.1533","above 0.01, below the 0.05 aim",PASS
 ✔,1. Uniformity,"Frequency test χ², strong number (1..7, n=328)",p > 0.01 (aim > 0.05),p = 0.2319,,PASS
-✔,1. Uniformity,"KS (discrete), main numbers pooled",p > 0.01 (aim > 0.05),"D = 0.0270, MC p = 0.0437","above 0.01, below the 0.05 aim",PASS
-✔,1. Uniformity,"KS (discrete), strong number",p > 0.01 (aim > 0.05),"D = 0.0379, MC p = 0.3925",,PASS
+✔,1. Uniformity,"KS (discrete), main numbers pooled",p > 0.01 (aim > 0.05),"D = 0.0270, p = 0.1104","above 0.01, below the 0.05 aim",PASS
+✔,1. Uniformity,"KS (discrete), strong number",p > 0.01 (aim > 0.05),"D = 0.0379, p = 0.7192",,PASS
 ✔,1. Uniformity,Proportion of the 8 blocks (41 draws each) passing χ²,~0.99 (NIST interval m=8: ≥ 0.8845),main 1.0000; strong 1.0000,,PASS
 ✔,1. Uniformity,NIST Frequency,"p > 0.01, proportion ~0.99",p = 0.293128; proportion 8/8 = 1.0000 (>= 0.8845); nan,,PASS
 ✔,1. Uniformity,NIST Block Frequency,"p > 0.01 (aim > 0.05), proportion ~0.99",p = 0.639374; proportion 8/8 = 1.0000 (>= 0.8845); nan,,PASS

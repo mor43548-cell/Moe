@@ -23,7 +23,6 @@ RES.mkdir(exist_ok=True); FIG.mkdir(exist_ok=True)
 NMAX, K, SMAX = 37, 6, 7
 ADJ = 36 / 31            # chi-square scale factor for 6-without-replacement sampling
 M_BLOCKS, BLOCK = 8, 41  # 328 = 8 x 41
-MC_SIMS, SEED = 20000, 20261107
 ALPHA, ALPHA_STRICT, MAX_LAG, Z95, ENT_T, TARGET = 0.01, 0.05, 20, 1.959964, 0.999, 0.99
 
 log = []
@@ -53,22 +52,6 @@ def main_chi_p(m):
     c = counts_main(m); x2 = chi2_stat(c, m.size)
     return x2, float(stats.chi2.sf(x2 * ADJ, NMAX - 1)), float(stats.chi2.sf(x2, NMAX - 1))
 
-# ---------------- Monte Carlo under exact H0 ----------------
-rng = np.random.default_rng(SEED)
-mc_x2, mc_ks, mc_sx2, mc_sks = [], [], [], []
-for _ in range(MC_SIMS // 500):
-    keys = rng.random((500, D, NMAX))
-    draws = np.argpartition(keys, K, axis=2)[:, :, :K] + 1
-    for d in draws:
-        c = counts_main(d); mc_x2.append(chi2_stat(c, d.size)); mc_ks.append(ks_D(c))
-    s = rng.integers(1, SMAX + 1, size=(500, D))
-    for v in s:
-        c = np.bincount(v - 1, minlength=SMAX); mc_sx2.append(chi2_stat(c, D)); mc_sks.append(ks_D(c))
-mc_x2, mc_ks, mc_sx2, mc_sks = map(np.array, (mc_x2, mc_ks, mc_sx2, mc_sks))
-mcp = lambda arr, obs: float((1 + np.sum(arr >= obs - 1e-12)) / (1 + len(arr)))
-out(f"Monte Carlo check of the chi-square scale: mean X² under H0 = {mc_x2.mean():.3f} (theory 36*31/36 = 31.000); "
-    f"adjusted-asymptotic vs MC 95th percentile: {stats.chi2.ppf(0.95, 36) / ADJ:.3f} vs {np.percentile(mc_x2, 95):.3f}")
-
 # =========================================================
 # 1. UNIFORMITY
 # =========================================================
@@ -80,10 +63,10 @@ x2s = chi2_stat(cs, D); p_s = float(stats.chi2.sf(x2s, SMAX - 1)); kss = ks_D(cs
 uni = pd.DataFrame([
     dict(variable="Main numbers pooled (1..37)", n=int(main.size), k=NMAX, expected_per_value=main.size / NMAX,
          min_count=int(cm.min()), max_count=int(cm.max()), chi2=x2m, df=NMAX - 1,
-         p_chi2_primary=p_m_adj, p_chi2_unadjusted=p_m_raw, p_chi2_MC=mcp(mc_x2, x2m), KS_D=ksm, p_KS_MC=mcp(mc_ks, ksm)),
+         p_chi2_primary=p_m_adj, p_chi2_unadjusted=p_m_raw, KS_D=ksm, p_KS=float(stats.kstwo.sf(ksm, main.size))),
     dict(variable="Strong number (1..7)", n=int(D), k=SMAX, expected_per_value=D / SMAX,
          min_count=int(cs.min()), max_count=int(cs.max()), chi2=x2s, df=SMAX - 1,
-         p_chi2_primary=p_s, p_chi2_unadjusted=p_s, p_chi2_MC=mcp(mc_sx2, x2s), KS_D=kss, p_KS_MC=mcp(mc_sks, kss)),
+         p_chi2_primary=p_s, p_chi2_unadjusted=p_s, KS_D=kss, p_KS=float(stats.kstwo.sf(kss, D))),
 ])
 out(uni.to_string(index=False))
 uni.to_csv(RES / "1_uniformity.csv", index=False)
@@ -109,7 +92,7 @@ axes[0].axhline(main.size / NMAX, color="#C44E52", ls="--", lw=2, label=f"expect
 sd = math.sqrt(D * (K / NMAX) * (1 - K / NMAX))
 axes[0].axhspan(main.size / NMAX - 1.96 * sd, main.size / NMAX + 1.96 * sd, color="grey", alpha=0.15, label="±1.96 SD of a single count under H0")
 axes[0].set_xticks(range(1, NMAX + 1)); axes[0].set_xlabel("main number"); axes[0].set_ylabel("count")
-axes[0].set_title(f"Main numbers pooled (n = {main.size})   chi² p = {p_m_adj:.4f}   KS p = {uni.p_KS_MC[0]:.4f}"); axes[0].legend(fontsize=9)
+axes[0].set_title(f"Main numbers pooled (n = {main.size})   chi² p = {p_m_adj:.4f}   KS p = {uni.p_KS[0]:.4f}"); axes[0].legend(fontsize=9)
 axes[1].bar(range(1, SMAX + 1), cs, color="#55A868", width=0.8)
 axes[1].axhline(D / SMAX, color="#C44E52", ls="--", lw=2)
 axes[1].set_title(f"Strong number   chi² p = {p_s:.4f}"); axes[1].set_xlabel("strong number")
@@ -242,6 +225,5 @@ out(f"\nNIST battery: PASS {P['PASS']}/15, FAIL {P['FAIL']}/15, N/A {P['N/A']}/1
 
 json.dump(dict(prop_bounds_m8=bounds(8), prop_bounds_m7=bounds(7), prop_main=prop_main, prop_strong=prop_strong,
                prop_runs_ud=prop_ud, prop_runs_md=prop_md, nist=P, stream_bits=len(stream),
-               used_main=int(keep_m.sum()), used_strong=int(keep_s.sum()),
-               mc_mean_x2=float(mc_x2.mean())), open(RES / "summary.json", "w"), indent=2)
+               used_main=int(keep_m.sum()), used_strong=int(keep_s.sum())), open(RES / "summary.json", "w"), indent=2)
 (RES / "machine_output.txt").write_text("\n".join(log) + "\n")

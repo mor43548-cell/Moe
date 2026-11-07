@@ -74,7 +74,7 @@ v2 keeps the same tests and the same thresholds, and only changes the representa
 
 | Block | v2 result |
 |---|---|
-| χ² main numbers pooled (n=1968) | p = 0.0426 (above 0.01, below 0.05); MC p = 0.0426 |
+| χ² main numbers pooled (n=1968) | p = 0.0426 (above 0.01, below 0.05); KS p = 0.1104 |
 | χ² strong number | p = 0.2319 |
 | Proportion (8 blocks) | 1.0000 main, 1.0000 strong |
 | Runs tests (p > 0.05) | 12/14 pass. Fails: N1 up/down p = 0.0086; N4 median p = 0.0490 |
