@@ -26,7 +26,7 @@ mm_ratio = (math.log2(K) - (K - 1) / (2 * N * math.log(2))) / math.log2(K)      
 p1 = BE["ones_fraction_if_numbers_perfectly_uniform_1_37"]
 hb_enc = -(p1 * math.log2(p1) + (1 - p1) * math.log2(1 - p1))
 obs = U["pooled"]["chi2"]["observed"]; e_ = U["pooled"]["chi2"]["expected_per_value"]
-band = 1.96 * math.sqrt(e_ * (1 - 1 / K))
+band = 1.96 * math.sqrt(len(tbl) * (6 / K) * (1 - 6 / K))  # Binomial(328, 6/37)
 out_band = [i + 1 for i, o in enumerate(obs) if abs(o - e_) > band]
 col_out = {c: I[c]["lags_outside_band"] for c in COLS}
 n_out = sum(len(v) for v in col_out.values())

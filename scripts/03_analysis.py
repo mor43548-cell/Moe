@@ -66,8 +66,8 @@ obs = np.array(U["pooled"]["chi2"]["observed"]); e = U["pooled"]["chi2"]["expect
 fig, ax = plt.subplots(figsize=(9, 3.6))
 ax.bar(range(1, K + 1), obs, color="#4C72B0", edgecolor="white")
 ax.axhline(e, color="black", lw=1.2, label=f"expected under uniformity = {e:.2f}")
-band = 1.96 * math.sqrt(e * (1 - 1 / K))
-ax.axhspan(e - band, e + band, color="grey", alpha=0.2, label="±1.96·sd (binomial)")
+band = 1.96 * math.sqrt(n_rows * (6 / K) * (1 - 6 / K))  # count of a number ~ Binomial(328, 6/37)
+ax.axhspan(e - band, e + band, color="grey", alpha=0.2, label="±1.96·sd, Binomial(328, 6/37)")
 ax.set_xticks(range(1, K + 1)); ax.set_xlabel("number"); ax.set_ylabel("count")
 ax.set_title(f"Frequency histogram, all {len(pooled)} numbers (6 x {n_rows})   "
              f"chi2={U['pooled']['chi2']['chi2']:.2f}, df=36, p={U['pooled']['chi2']['p_value']:.4f}")
