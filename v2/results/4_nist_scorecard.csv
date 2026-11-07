@@ -1,0 +1,16 @@
+test,p_values,proportion,status,reason
+Frequency,0.293128,8/8 = 1.0000 (>= 0.8845),PASS,
+BlockFrequency,0.639374,8/8 = 1.0000 (>= 0.8845),PASS,
+Runs,0.471486,8/8 = 1.0000 (>= 0.8845),PASS,
+LongestRun,0.163973,8/8 = 1.0000 (>= 0.8845),PASS,
+BinaryMatrixRank,,,N/A,n=6692 < 38*M*Q=38912
+DFT,0.135710,—,FAIL,DFT implementation not validated against spec example; no block long enough for a proportion
+NonOverlappingTemplate,0.948946,8/8 = 1.0000 (>= 0.8845),PASS,
+OverlappingTemplate,,,N/A,"n=6692 < 1,000,000"
+MaurerUniversal,,,N/A,"n=6692 < 387,840"
+LinearComplexity,,,N/A,"n=6692 < 1,000,000"
+Serial,0.416426 / 0.383209,8/8 = 1.0000 (>= 0.8845),PASS,
+ApproximateEntropy,0.669810,8/8 = 1.0000 (>= 0.8845),PASS,
+CumulativeSums,0.461201 / 0.218584,8/8 = 1.0000 (>= 0.8845),PASS,
+RandomExcursions,,,N/A,"n=6692 (requires >= 1,000,000); J=66 cycles (requires >= 500)"
+RandomExcursionsVariant,,,N/A,"n=6692 (requires >= 1,000,000); J=66 cycles (requires >= 500)"

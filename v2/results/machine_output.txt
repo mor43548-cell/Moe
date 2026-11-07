@@ -1,0 +1,211 @@
+Draws: 328; main numbers pooled: 1968; strong numbers: 328
+Monte Carlo check of the chi-square scale: mean X² under H0 = 30.928 (theory 36*31/36 = 31.000); adjusted-asymptotic vs MC 95th percentile: 43.915 vs 43.875
+
+=== 1. UNIFORMITY ===
+                   variable    n  k  expected_per_value  min_count  max_count      chi2  df  p_chi2_primary  p_chi2_unadjusted  p_chi2_MC     KS_D  p_KS_MC
+Main numbers pooled (1..37) 1968 37           53.189189         39         72 44.627033  36        0.042552           0.153282   0.042598 0.027041 0.043698
+       Strong number (1..7)  328  7           46.857143         38         60  8.085366   6        0.231916           0.231916   0.229689 0.037892 0.392530
+ block   draws  p_main_chi2  p_strong_chi2
+     1    1-41     0.649319       0.509891
+     2   42-82     0.838660       0.192211
+     3  83-123     0.987890       0.356009
+     4 124-164     0.532315       0.932653
+     5 165-205     0.402257       0.958680
+     6 206-246     0.649319       0.864351
+     7 247-287     0.616216       0.689877
+     8 288-328     0.040091       0.689877
+Proportion (blocks with p >= 0.01): main 1.0000, strong 1.0000; NIST interval for m=8: >= 0.8845
+
+=== 2. INDEPENDENCE ===
+         series  acf_lag1  max_abs_acf  lags_outside_band which_lags  runs_updown_R  runs_updown_expected  runs_updown_p  runs_median_R  runs_median_expected  runs_median_p
+N1_smallest (Q) -0.072586     0.114761                  1          8            209            190.333333       0.008635            158            150.123746       0.360279
+         N2 (W) -0.089353     0.094933                  0                       219            206.333333       0.087033            157            154.498371       0.774861
+         N3 (E)  0.031135     0.141132                  3   10 14 16            205            210.333333       0.475464            155            156.993590       0.821122
+         N4 (R)  0.061490     0.137473                  2       7 14            218            211.000000       0.349718            140            157.370607       0.049013
+         N5 (T)  0.055578     0.110086                  2      11 16            208            206.333333       0.821850            150            153.459016       0.691452
+ N6_largest (Y)  0.076785     0.161015                  2       6 11            190            189.666667       0.962530            144            143.825175       0.983455
+   Strong (ABC)  0.085874     0.103369                  0                       191            188.333333       0.706051            134            141.565371       0.364385
+95% band = ±0.1082
+
+=== 3. ENTROPY ===
+Bit stream: 6692 bits; main draws used 302/328 (expected 295.9); strong used 175/328 (expected 187.4)
+                              variable        H    H_max    ratio  ref_expected_ratio_if_H0  meets_99_9
+                   Main numbers pooled 5.193458 5.209453 0.996930                  0.997467       False
+                         Strong number 2.789867 2.807355 0.993771                  0.995300       False
+NIST bit stream (ones fraction 0.5064) 0.999881 1.000000 0.999881                  0.999892        True
+
+=== 4. NIST SP 800-22 ===
+stream  n_bits                    test  sub  p_value  result
+ WHOLE    6692               Frequency    1 0.293128 SUCCESS
+ WHOLE    6692          BlockFrequency    1 0.639374 SUCCESS
+ WHOLE    6692                    Runs    1 0.471486 SUCCESS
+ WHOLE    6692              LongestRun    1 0.163973 SUCCESS
+ WHOLE    6692        BinaryMatrixRank    0      NaN     N/A
+ WHOLE    6692                     DFT    1 0.135710 SUCCESS
+ WHOLE    6692  NonOverlappingTemplate    1 0.948946 SUCCESS
+ WHOLE    6692     OverlappingTemplate    0      NaN     N/A
+ WHOLE    6692         MaurerUniversal    0      NaN     N/A
+ WHOLE    6692        LinearComplexity    0      NaN     N/A
+ WHOLE    6692                  Serial    1 0.416426 SUCCESS
+ WHOLE    6692                  Serial    2 0.383209 SUCCESS
+ WHOLE    6692      ApproximateEntropy    1 0.669810 SUCCESS
+ WHOLE    6692          CumulativeSums    1 0.461201 SUCCESS
+ WHOLE    6692          CumulativeSums    2 0.218584 SUCCESS
+ WHOLE    6692        RandomExcursions    0      NaN     N/A
+ WHOLE    6692 RandomExcursionsVariant    0      NaN     N/A
+    B1     798               Frequency    1 0.943558 SUCCESS
+    B1     798          BlockFrequency    1 0.018411 SUCCESS
+    B1     798                    Runs    1 0.119372 SUCCESS
+    B1     798              LongestRun    1 0.548041 SUCCESS
+    B1     798        BinaryMatrixRank    0      NaN     N/A
+    B1     798                     DFT    0      NaN     N/A
+    B1     798  NonOverlappingTemplate    1 0.994903 SUCCESS
+    B1     798     OverlappingTemplate    0      NaN     N/A
+    B1     798         MaurerUniversal    0      NaN     N/A
+    B1     798        LinearComplexity    0      NaN     N/A
+    B1     798                  Serial    1 0.219558 SUCCESS
+    B1     798                  Serial    2 0.156097 SUCCESS
+    B1     798      ApproximateEntropy    1 0.267643 SUCCESS
+    B1     798          CumulativeSums    1 0.513251 SUCCESS
+    B1     798          CumulativeSums    2 0.573597 SUCCESS
+    B1     798        RandomExcursions    0      NaN     N/A
+    B1     798 RandomExcursionsVariant    0      NaN     N/A
+    B2     865               Frequency    1 0.324119 SUCCESS
+    B2     865          BlockFrequency    1 0.326591 SUCCESS
+    B2     865                    Runs    1 0.734272 SUCCESS
+    B2     865              LongestRun    1 0.189805 SUCCESS
+    B2     865        BinaryMatrixRank    0      NaN     N/A
+    B2     865                     DFT    0      NaN     N/A
+    B2     865  NonOverlappingTemplate    1 0.486598 SUCCESS
+    B2     865     OverlappingTemplate    0      NaN     N/A
+    B2     865         MaurerUniversal    0      NaN     N/A
+    B2     865        LinearComplexity    0      NaN     N/A
+    B2     865                  Serial    1 0.602035 SUCCESS
+    B2     865                  Serial    2 0.746205 SUCCESS
+    B2     865      ApproximateEntropy    1 0.108367 SUCCESS
+    B2     865          CumulativeSums    1 0.369514 SUCCESS
+    B2     865          CumulativeSums    2 0.347544 SUCCESS
+    B2     865        RandomExcursions    0      NaN     N/A
+    B2     865 RandomExcursionsVariant    0      NaN     N/A
+    B3     842               Frequency    1 0.168052 SUCCESS
+    B3     842          BlockFrequency    1 0.038058 SUCCESS
+    B3     842                    Runs    1 0.838513 SUCCESS
+    B3     842              LongestRun    1 0.586730 SUCCESS
+    B3     842        BinaryMatrixRank    0      NaN     N/A
+    B3     842                     DFT    0      NaN     N/A
+    B3     842  NonOverlappingTemplate    1 0.801294 SUCCESS
+    B3     842     OverlappingTemplate    0      NaN     N/A
+    B3     842         MaurerUniversal    0      NaN     N/A
+    B3     842        LinearComplexity    0      NaN     N/A
+    B3     842                  Serial    1 0.601869 SUCCESS
+    B3     842                  Serial    2 0.876600 SUCCESS
+    B3     842      ApproximateEntropy    1 0.231075 SUCCESS
+    B3     842          CumulativeSums    1 0.315294 SUCCESS
+    B3     842          CumulativeSums    2 0.125499 SUCCESS
+    B3     842        RandomExcursions    0      NaN     N/A
+    B3     842 RandomExcursionsVariant    0      NaN     N/A
+    B4     840               Frequency    1 0.333998 SUCCESS
+    B4     840          BlockFrequency    1 0.899182 SUCCESS
+    B4     840                    Runs    1 0.807158 SUCCESS
+    B4     840              LongestRun    1 0.480087 SUCCESS
+    B4     840        BinaryMatrixRank    0      NaN     N/A
+    B4     840                     DFT    0      NaN     N/A
+    B4     840  NonOverlappingTemplate    1 0.801294 SUCCESS
+    B4     840     OverlappingTemplate    0      NaN     N/A
+    B4     840         MaurerUniversal    0      NaN     N/A
+    B4     840        LinearComplexity    0      NaN     N/A
+    B4     840                  Serial    1 0.168658 SUCCESS
+    B4     840                  Serial    2 0.695583 SUCCESS
+    B4     840      ApproximateEntropy    1 0.728082 SUCCESS
+    B4     840          CumulativeSums    1 0.566932 SUCCESS
+    B4     840          CumulativeSums    2 0.508461 SUCCESS
+    B4     840        RandomExcursions    0      NaN     N/A
+    B4     840 RandomExcursionsVariant    0      NaN     N/A
+    B5     758               Frequency    1 0.662939 SUCCESS
+    B5     758          BlockFrequency    1 0.459867 SUCCESS
+    B5     758                    Runs    1 0.348400 SUCCESS
+    B5     758              LongestRun    1 0.482132 SUCCESS
+    B5     758        BinaryMatrixRank    0      NaN     N/A
+    B5     758                     DFT    0      NaN     N/A
+    B5     758  NonOverlappingTemplate    1 0.995883 SUCCESS
+    B5     758     OverlappingTemplate    0      NaN     N/A
+    B5     758         MaurerUniversal    0      NaN     N/A
+    B5     758        LinearComplexity    0      NaN     N/A
+    B5     758                  Serial    1 0.744397 SUCCESS
+    B5     758                  Serial    2 0.962024 SUCCESS
+    B5     758      ApproximateEntropy    1 0.198530 SUCCESS
+    B5     758          CumulativeSums    1 0.680753 SUCCESS
+    B5     758          CumulativeSums    2 0.646978 SUCCESS
+    B5     758        RandomExcursions    0      NaN     N/A
+    B5     758 RandomExcursionsVariant    0      NaN     N/A
+    B6     819               Frequency    1 0.916512 SUCCESS
+    B6     819          BlockFrequency    1 0.969406 SUCCESS
+    B6     819                    Runs    1 0.861604 SUCCESS
+    B6     819              LongestRun    1 0.173693 SUCCESS
+    B6     819        BinaryMatrixRank    0      NaN     N/A
+    B6     819                     DFT    0      NaN     N/A
+    B6     819  NonOverlappingTemplate    1 0.790590 SUCCESS
+    B6     819     OverlappingTemplate    0      NaN     N/A
+    B6     819         MaurerUniversal    0      NaN     N/A
+    B6     819        LinearComplexity    0      NaN     N/A
+    B6     819                  Serial    1 0.486240 SUCCESS
+    B6     819                  Serial    2 0.412858 SUCCESS
+    B6     819      ApproximateEntropy    1 0.495643 SUCCESS
+    B6     819          CumulativeSums    1 0.961405 SUCCESS
+    B6     819          CumulativeSums    2 0.898169 SUCCESS
+    B6     819        RandomExcursions    0      NaN     N/A
+    B6     819 RandomExcursionsVariant    0      NaN     N/A
+    B7     876               Frequency    1 0.735462 SUCCESS
+    B7     876          BlockFrequency    1 0.662425 SUCCESS
+    B7     876                    Runs    1 0.842349 SUCCESS
+    B7     876              LongestRun    1 0.845102 SUCCESS
+    B7     876        BinaryMatrixRank    0      NaN     N/A
+    B7     876                     DFT    0      NaN     N/A
+    B7     876  NonOverlappingTemplate    1 0.813995 SUCCESS
+    B7     876     OverlappingTemplate    0      NaN     N/A
+    B7     876         MaurerUniversal    0      NaN     N/A
+    B7     876        LinearComplexity    0      NaN     N/A
+    B7     876                  Serial    1 0.848355 SUCCESS
+    B7     876                  Serial    2 0.896573 SUCCESS
+    B7     876      ApproximateEntropy    1 0.321049 SUCCESS
+    B7     876          CumulativeSums    1 0.914586 SUCCESS
+    B7     876          CumulativeSums    2 0.890195 SUCCESS
+    B7     876        RandomExcursions    0      NaN     N/A
+    B7     876 RandomExcursionsVariant    0      NaN     N/A
+    B8     894               Frequency    1 0.422160 SUCCESS
+    B8     894          BlockFrequency    1 0.866999 SUCCESS
+    B8     894                    Runs    1 0.372521 SUCCESS
+    B8     894              LongestRun    1 0.782565 SUCCESS
+    B8     894        BinaryMatrixRank    0      NaN     N/A
+    B8     894                     DFT    0      NaN     N/A
+    B8     894  NonOverlappingTemplate    1 0.011783 SUCCESS
+    B8     894     OverlappingTemplate    0      NaN     N/A
+    B8     894         MaurerUniversal    0      NaN     N/A
+    B8     894        LinearComplexity    0      NaN     N/A
+    B8     894                  Serial    1 0.936771 SUCCESS
+    B8     894                  Serial    2 0.727187 SUCCESS
+    B8     894      ApproximateEntropy    1 0.835832 SUCCESS
+    B8     894          CumulativeSums    1 0.456556 SUCCESS
+    B8     894          CumulativeSums    2 0.626161 SUCCESS
+    B8     894        RandomExcursions    0      NaN     N/A
+    B8     894 RandomExcursionsVariant    0      NaN     N/A
+
+SCORECARD
+                   test            p_values               proportion status                                                                                       reason
+              Frequency            0.293128 8/8 = 1.0000 (>= 0.8845)   PASS                                                                                             
+         BlockFrequency            0.639374 8/8 = 1.0000 (>= 0.8845)   PASS                                                                                             
+                   Runs            0.471486 8/8 = 1.0000 (>= 0.8845)   PASS                                                                                             
+             LongestRun            0.163973 8/8 = 1.0000 (>= 0.8845)   PASS                                                                                             
+       BinaryMatrixRank                                                 N/A                                                                        n=6692 < 38*M*Q=38912
+                    DFT            0.135710                        —   FAIL DFT implementation not validated against spec example; no block long enough for a proportion
+ NonOverlappingTemplate            0.948946 8/8 = 1.0000 (>= 0.8845)   PASS                                                                                             
+    OverlappingTemplate                                                 N/A                                                                           n=6692 < 1,000,000
+        MaurerUniversal                                                 N/A                                                                             n=6692 < 387,840
+       LinearComplexity                                                 N/A                                                                           n=6692 < 1,000,000
+                 Serial 0.416426 / 0.383209 8/8 = 1.0000 (>= 0.8845)   PASS                                                                                             
+     ApproximateEntropy            0.669810 8/8 = 1.0000 (>= 0.8845)   PASS                                                                                             
+         CumulativeSums 0.461201 / 0.218584 8/8 = 1.0000 (>= 0.8845)   PASS                                                                                             
+       RandomExcursions                                                 N/A                                n=6692 (requires >= 1,000,000); J=66 cycles (requires >= 500)
+RandomExcursionsVariant                                                 N/A                                n=6692 (requires >= 1,000,000); J=66 cycles (requires >= 500)
+
+NIST battery: PASS 8/15, FAIL 1/15, N/A 6/15

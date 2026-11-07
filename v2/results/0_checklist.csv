@@ -1,0 +1,24 @@
+checked,section,item,required threshold,observed (machine output),note,status
+✔,1. Uniformity,"Frequency test χ², main numbers pooled (1..37, n=1968)",p > 0.01 (aim > 0.05),"p = 0.0426 (adjusted, primary); MC p = 0.0426; unadjusted p = 0.1533","above 0.01, below the 0.05 aim",PASS
+✔,1. Uniformity,"Frequency test χ², strong number (1..7, n=328)",p > 0.01 (aim > 0.05),p = 0.2319,,PASS
+✔,1. Uniformity,"KS (discrete), main numbers pooled",p > 0.01 (aim > 0.05),"D = 0.0270, MC p = 0.0437","above 0.01, below the 0.05 aim",PASS
+✔,1. Uniformity,"KS (discrete), strong number",p > 0.01 (aim > 0.05),"D = 0.0379, MC p = 0.3925",,PASS
+✔,1. Uniformity,Proportion of the 8 blocks (41 draws each) passing χ²,~0.99 (NIST interval m=8: ≥ 0.8845),main 1.0000; strong 1.0000,,PASS
+✔,1. Uniformity,NIST Frequency,"p > 0.01, proportion ~0.99",p = 0.293128; proportion 8/8 = 1.0000 (>= 0.8845); nan,,PASS
+✔,1. Uniformity,NIST Block Frequency,"p > 0.01 (aim > 0.05), proportion ~0.99",p = 0.639374; proportion 8/8 = 1.0000 (>= 0.8845); nan,,PASS
+✔,1. Uniformity,Frequency histogram (visual),relatively flat,Figure 1,counts range 39-72 around an expected 53.2; strong 38-60 around 46.9,PASS
+✔,2. Independence,"Runs up/down, 7 series over draws",p > 0.05,N1_smallest=0.0086; N2=0.0870; N3=0.4755; N4=0.3497; N5=0.8219; N6_largest=0.9625; Strong=0.7061,fails: N1_smallest (Q),FAIL
+✔,2. Independence,"Runs above/below median, 7 series",p > 0.05,N1_smallest=0.3603; N2=0.7749; N3=0.8211; N4=0.0490; N5=0.6915; N6_largest=0.9835; Strong=0.3644,fails: N4 (R),FAIL
+✔,2. Independence,NIST Runs,"p > 0.05, proportion ~0.99",p = 0.471486; proportion 8/8 = 1.0000 (>= 0.8845); nan,,PASS
+✔,2. Independence,NIST Longest Run of Ones,"p > 0.05, proportion ~0.99",p = 0.163973; proportion 8/8 = 1.0000 (>= 0.8845); nan,,PASS
+✔,2. Independence,"Autocorrelation coefficient, lags 1-20",→ 0 within the 95% band ±1.96/√N,max |r| = 0.161; 10/140 coefficients outside the band (about 7 expected by chance),,FAIL
+✔,2. Independence,Correlogram (visual),all bars except lag 0 inside the band,Figure 2,"all inside only for: N2 (W), Strong (ABC)",FAIL
+✔,2. Independence,NIST Random Excursions,p > 0.05,"N/A — n=6692 (requires >= 1,000,000); J=66 cycles (requires >= 500)",,N/A
+✔,2. Independence,NIST Random Excursions Variant,p > 0.05,"N/A — n=6692 (requires >= 1,000,000); J=66 cycles (requires >= 500)",,N/A
+✔,3. Entropy,"Shannon, main numbers pooled (max log2 37)",≥ 99.9%,0.99693,reference: expected under H0 at this n = 0.99747,FAIL
+✔,3. Entropy,"Shannon, strong number (max log2 7)",≥ 99.9%,0.99377,reference: expected under H0 = 0.99530,FAIL
+✔,3. Entropy,"Shannon, NIST bit stream (max 1.000)",≥ 0.999,0.99988,,PASS
+✔,3. Entropy,NIST Maurer's Universal,p > 0.05,"N/A — n=6692 < 387,840",,N/A
+✔,3. Entropy,NIST Approximate Entropy,p > 0.05,p = 0.669810; proportion 8/8 = 1.0000 (>= 0.8845); nan,,PASS
+✔,4. NIST,Binary Matrix Rank,p > 0.01,N/A — n=6692 < 38*M*Q=38912,,N/A
+✔,4. NIST,Full battery,15/15 PASS,PASS 8/15 · FAIL 1/15 · N/A 6/15,,FAIL

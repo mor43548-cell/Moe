@@ -1,0 +1,23 @@
+{
+  "prop_bounds_m8": [
+    0.8844656454039728,
+    1.0
+  ],
+  "prop_bounds_m7": [
+    0.8771790293049584,
+    1.0
+  ],
+  "prop_main": 1.0,
+  "prop_strong": 1.0,
+  "prop_runs_ud": 0.8571428571428571,
+  "prop_runs_md": 1.0,
+  "nist": {
+    "PASS": 8,
+    "FAIL": 1,
+    "N/A": 6
+  },
+  "stream_bits": 6692,
+  "used_main": 302,
+  "used_strong": 175,
+  "mc_mean_x2": 30.927923526422767
+}

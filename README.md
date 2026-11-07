@@ -63,3 +63,23 @@ c8d7ca17846d48eaec1ee2c464d942678e8de10a1b65a3eeb48ec2760b3e526b  ABC.csv
 pip install -r requirements.txt   # tested: Python 3.13, numpy 2.5.3, scipy 1.18.1, pandas 3.0.5, matplotlib 3.11.2, openpyxl 3.1.5
 ./run_all.sh
 ```
+
+---
+
+# Version 2: the same test set, under the lotto hypothesis (folder `v2/`)
+
+The data turned out to have the structure of a 6/37 lotto with a strong number. In all 328 rows Q<W<E<R<T<Y (6 distinct numbers in 1..37, sorted), and ABC is in 1..7.
+v1 tested each sorted column as if it should be uniform, which is the wrong null hypothesis for order statistics.
+v2 keeps the same tests and the same thresholds, and only changes the representation of the data. The design (`v2/DESIGN.md`) was committed to git **before** running the tests.
+
+| Block | v2 result |
+|---|---|
+| χ² main numbers pooled (n=1968) | p = 0.0426 (above 0.01, below 0.05); MC p = 0.0426 |
+| χ² strong number | p = 0.2319 |
+| Proportion (8 blocks) | 1.0000 main, 1.0000 strong |
+| Runs tests (p > 0.05) | 12/14 pass. Fails: N1 up/down p = 0.0086; N4 median p = 0.0490 |
+| Correlogram | 10/140 lags outside the 95% band (about 7 expected) |
+| Shannon entropy ≥ 99.9% | values: 0.99693 / 0.99377 (fail; expected under H0 at this n: 0.99747 / 0.99530). Bits: 0.99988 (pass) |
+| NIST SP 800-22 | PASS 8/15 · FAIL 1/15 (DFT p = 0.1357; failed only because no block allows a proportion) · N/A 6/15 |
+
+**Criterion "100% of the tests": NOT MET.** Report: `v2/report/Lotto_Randomness_Report_v2.pdf` / `.xlsx`. Reproduce: `./v2/run_v2.sh`.
