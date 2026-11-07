@@ -10,3 +10,8 @@
   4. The requester's message, word for word.
   5. A technical note: rebuild the CSV from the text and verify the hash; put all outputs in the final message.
 - Not given: the lotto interpretation, the column relabelling, my tests or my results.
+
+## Result
+The independent session finished (about 7 minutes, no errors). Its full final message (report, machine output, code) was read
+from its transcript with list_events and is summarized in the comparison in the chat. Its own files stayed in its container
+(/home/user/lotto_report/), and I have no access to them. The verbatim report should be saved here as `agent_final_report.md`.
