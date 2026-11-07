@@ -1,0 +1,56 @@
+{
+  "files_received": 6,
+  "files_announced_by_user": 7,
+  "rows": 328,
+  "rows_per_file": {
+    "Y": 328,
+    "T": 328,
+    "W": 328,
+    "E": 328,
+    "R": 328,
+    "Q": 328
+  },
+  "missing_values": 0,
+  "all_integer": true,
+  "global_min": 1,
+  "global_max": 37,
+  "per_column_min": {
+    "Y": 11,
+    "T": 7,
+    "W": 2,
+    "E": 3,
+    "R": 6,
+    "Q": 1
+  },
+  "per_column_max": {
+    "Y": 37,
+    "T": 36,
+    "W": 28,
+    "E": 33,
+    "R": 35,
+    "Q": 23
+  },
+  "rows_with_6_distinct_values": 328,
+  "rows_strictly_ascending_Q<W<E<R<T<Y": 328,
+  "duplicate_rows": 0,
+  "sha256_raw": {
+    "Y": "14a52efa0a5313d59be44d5bca23cc7c19e06364b2ca8107ccc7d04e1f4e46ea",
+    "T": "88725a1abd9ea971f70bbbf3e89ae0ecde3153c65f639fd0487da631443fdbf9",
+    "W": "2d141bafebd0bb30c74a13049ef1218819cf3bd4820e34cdabf83ece32e78ca1",
+    "E": "7d7a1d823c1a5b009221d4bfc380f30b921e8e87455ea0fc7161b2866e027515",
+    "R": "705506bfd70059e3bf88ddbf59efe4f8299361879c330af21a1dccbfa77cb976",
+    "Q": "91adb601c658f0e742d675b159dbe80c18c7fbca16b40bf789f03ff0c456f78b"
+  }
+}
+      Y   T   W   E   R   Q
+row                        
+1    37  29   7  15  25   2
+2    28  27  22  24  25  18
+3    35  34   4  18  19   3
+4    34  32   4   7  22   1
+5    25  18   4   6  13   2
+6    31  27   3   6  14   2
+7    37  30   8  11  25   1
+8    35  27   7  10  15   5
+9    34  27  20  24  26  15
+10   31  29   7  25  28   1
