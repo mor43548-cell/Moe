@@ -1,0 +1,29 @@
+{
+  "N": 328,
+  "columns": [
+    "Y",
+    "T",
+    "W",
+    "R",
+    "ABC",
+    "Q",
+    "E"
+  ],
+  "proportion_bounds_m7": [
+    0.8771790293049584,
+    1.0
+  ],
+  "uniformity": {
+    "prop_chi2": 0.14285714285714285,
+    "prop_ks": 0.14285714285714285
+  },
+  "independence": {
+    "prop_runs_updown": 0.8571428571428571,
+    "prop_runs_median": 1.0
+  },
+  "nist": {
+    "pass_": 0,
+    "fail": 9,
+    "na": 6
+  }
+}

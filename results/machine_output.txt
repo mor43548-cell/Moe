@@ -1,0 +1,206 @@
+Merged table: 328 rows x 7 columns ['Y', 'T', 'W', 'R', 'ABC', 'Q', 'E']
+
+=== 1. UNIFORMITY ===
+column  min  max  k   N  expected_per_value  min_observed  max_observed  empty_values       chi2  df       p_chi2     KS_D         p_KS  chi2_p_gt_0_01  chi2_p_gt_0_05  KS_p_gt_0_01  KS_p_gt_0_05
+     Y   11   37 27 328           12.148148             0            50             6 540.115854  26 1.706636e-97 0.498984 5.080926e-76           False           False         False         False
+     T    7   36 30 328           10.933333             0            28             1 222.243902  29 1.124169e-31 0.359959 1.450363e-38           False           False         False         False
+     W    2   28 27 328           12.148148             0            31             1 125.073171  26 6.376225e-15 0.246725 4.520667e-18           False           False         False         False
+     R    6   35 30 328           10.933333             0            25             1 162.426829  29 1.673742e-20 0.192886 3.654623e-11           False           False         False         False
+   ABC    1    7  7 328           46.857143            38            60             0   8.085366   6 2.319157e-01 0.037892 7.192103e-01            True            True          True          True
+     Q    1   23 23 328           14.260870             1            67             0 416.274390  22 1.787199e-74 0.415164 1.066348e-51           False           False         False         False
+     E    3   33 31 328           10.580645             0            26             1 130.573171  30 1.644915e-14 0.164831 2.953836e-08           False           False         False         False
+Proportion of columns passing chi2 at alpha=0.01: 0.1429  (NIST acceptable range for m=7: [0.8772, 1.0000])
+Proportion of columns passing KS   at alpha=0.01: 0.1429
+
+=== 2. INDEPENDENCE ===
+column  acf_lag1  max_abs_acf_lags1_20  band_95  lags_outside_band which_lags_outside  runs_updown_R  runs_updown_expected  runs_updown_z  runs_updown_p  runs_updown_zero_diffs_dropped  runs_median_R  runs_median_expected  runs_median_z  runs_median_p  median  n_above  n_below  ties_at_median_dropped  updown_p_gt_0_05  median_p_gt_0_05
+     Y  0.076785              0.161015 0.108221                  2               6 11            190            189.666667       0.046979       0.962530                              43            144            143.825175       0.020737       0.983455    34.0      138      148                      42              True              True
+     T  0.055578              0.110086 0.108221                  2              11 16            208            206.333333       0.225166       0.821850                              18            150            153.459016      -0.396886       0.691452    28.0      150      155                      23              True              True
+     W -0.089353              0.094933 0.108221                  0                               219            206.333333       1.711260       0.087033                              18            157            154.498371       0.286022       0.774861    10.0      153      154                      21              True              True
+     R  0.061490              0.137473 0.108221                  2               7 14            218            211.000000       0.935136       0.349718                              11            140            157.370607      -1.968477       0.049013    22.0      161      152                      15              True             False
+   ABC  0.085874              0.103369 0.108221                  0                               191            188.333333       0.377166       0.706051                              45            134            141.565371      -0.907041       0.364385     4.0      153      130                      45              True              True
+     Q -0.072586              0.114761 0.108221                  1                  8            209            190.333333       2.626186       0.008635                              42            158            150.123746       0.914834       0.360279     4.0      157      142                      29             False              True
+     E  0.031135              0.141132 0.108221                  3           10 14 16            205            210.333333      -0.713618       0.475464                              12            155            156.993590      -0.226103       0.821122    17.0      155      157                      16              True              True
+Expected number of lags outside the 95% band among 20 under independence: 1.0 per column
+
+=== 3. ENTROPY ===
+  column    k   H_bits    H_max  H_ratio meets_99_9  bits_per_value  n_bits  ones_fraction  H_binary  H_binary_meets_99_9  ref_ones_fraction_if_exactly_uniform  ref_expected_H_ratio_if_uniform_N328
+       Y 27.0 3.669035 4.754888 0.771634      False             5.0    1640       0.553049  0.991865                False                              0.444444                              0.987974
+       T 30.0 4.342126 4.906891 0.884904      False             5.0    1640       0.560976  0.989245                False                              0.473333                              0.987002
+       W 27.0 4.442115 4.754888 0.934221      False             5.0    1640       0.397561  0.969506                False                              0.444444                              0.987974
+       R 30.0 4.516651 4.906891 0.920471      False             5.0    1640       0.504878  0.999931                 True                              0.473333                              0.987002
+     ABC  7.0 2.789867 2.807355 0.993771      False             3.0     984       0.434959  0.987759                False                              0.428571                              0.995300
+       Q 23.0 3.775553 4.523562 0.834642      False             5.0    1640       0.272561  0.845116                False                              0.417391                              0.989304
+       E 31.0 4.608076 4.954196 0.930136      False             5.0    1640       0.485366  0.999382                 True                              0.483871                              0.986683
+COMBINED  NaN      NaN      NaN      NaN        NaN             NaN   10824       0.459904  0.995356                False                                   NaN                                   NaN
+
+=== 4. NIST SP 800-22 (15 tests) ===
+  stream  n_bits                    test  sub       p_value  result p_gt_0_05
+       Y    1640               Frequency    1  1.734192e-05 FAILURE     False
+       Y    1640          BlockFrequency    1  8.775571e-01 SUCCESS      True
+       Y    1640                    Runs    1  0.000000e+00 FAILURE     False
+       Y    1640              LongestRun    1  1.120545e-06 FAILURE     False
+       Y    1640        BinaryMatrixRank    0           NaN     N/A      None
+       Y    1640                     DFT    1  3.221110e-03 FAILURE     False
+       Y    1640  NonOverlappingTemplate    1  9.305624e-01 SUCCESS      True
+       Y    1640     OverlappingTemplate    0           NaN     N/A      None
+       Y    1640         MaurerUniversal    0           NaN     N/A      None
+       Y    1640        LinearComplexity    0           NaN     N/A      None
+       Y    1640                  Serial    1  6.499631e-36 FAILURE     False
+       Y    1640                  Serial    2  1.081033e-06 FAILURE     False
+       Y    1640      ApproximateEntropy    1  1.632328e-24 FAILURE     False
+       Y    1640          CumulativeSums    1  2.772722e-05 FAILURE     False
+       Y    1640          CumulativeSums    2  3.102013e-05 FAILURE     False
+       Y    1640        RandomExcursions    0           NaN     N/A      None
+       Y    1640 RandomExcursionsVariant    0           NaN     N/A      None
+       T    1640               Frequency    1  7.866607e-07 FAILURE     False
+       T    1640          BlockFrequency    1  8.586509e-01 SUCCESS      True
+       T    1640                    Runs    1  0.000000e+00 FAILURE     False
+       T    1640              LongestRun    1  1.714225e-03 FAILURE     False
+       T    1640        BinaryMatrixRank    0           NaN     N/A      None
+       T    1640                     DFT    1  1.000000e+00 SUCCESS      True
+       T    1640  NonOverlappingTemplate    1  9.305624e-01 SUCCESS      True
+       T    1640     OverlappingTemplate    0           NaN     N/A      None
+       T    1640         MaurerUniversal    0           NaN     N/A      None
+       T    1640        LinearComplexity    0           NaN     N/A      None
+       T    1640                  Serial    1  1.756582e-08 FAILURE     False
+       T    1640                  Serial    2  4.085053e-02 SUCCESS     False
+       T    1640      ApproximateEntropy    1  2.946622e-11 FAILURE     False
+       T    1640          CumulativeSums    1  8.292651e-07 FAILURE     False
+       T    1640          CumulativeSums    2  1.573321e-06 FAILURE     False
+       T    1640        RandomExcursions    0           NaN     N/A      None
+       T    1640 RandomExcursionsVariant    0           NaN     N/A      None
+       W    1640               Frequency    1  1.068375e-16 FAILURE     False
+       W    1640          BlockFrequency    1  2.260117e-02 SUCCESS     False
+       W    1640                    Runs    1  0.000000e+00 FAILURE     False
+       W    1640              LongestRun    1  1.275836e-14 FAILURE     False
+       W    1640        BinaryMatrixRank    0           NaN     N/A      None
+       W    1640                     DFT    1  6.763008e-04 FAILURE     False
+       W    1640  NonOverlappingTemplate    1  7.095561e-01 SUCCESS      True
+       W    1640     OverlappingTemplate    0           NaN     N/A      None
+       W    1640         MaurerUniversal    0           NaN     N/A      None
+       W    1640        LinearComplexity    0           NaN     N/A      None
+       W    1640                  Serial    1  8.548811e-17 FAILURE     False
+       W    1640                  Serial    2  5.478578e-03 FAILURE     False
+       W    1640      ApproximateEntropy    1  2.262213e-18 FAILURE     False
+       W    1640          CumulativeSums    1  1.519082e-17 FAILURE     False
+       W    1640          CumulativeSums    2  5.341877e-17 FAILURE     False
+       W    1640        RandomExcursions    0           NaN     N/A      None
+       W    1640 RandomExcursionsVariant    0           NaN     N/A      None
+       R    1640               Frequency    1  6.927751e-01 SUCCESS      True
+       R    1640          BlockFrequency    1  9.998708e-01 SUCCESS      True
+       R    1640                    Runs    1  1.209568e-09 FAILURE     False
+       R    1640              LongestRun    1  3.468172e-04 FAILURE     False
+       R    1640        BinaryMatrixRank    0           NaN     N/A      None
+       R    1640                     DFT    1  1.000000e+00 SUCCESS      True
+       R    1640  NonOverlappingTemplate    1  9.305624e-01 SUCCESS      True
+       R    1640     OverlappingTemplate    0           NaN     N/A      None
+       R    1640         MaurerUniversal    0           NaN     N/A      None
+       R    1640        LinearComplexity    0           NaN     N/A      None
+       R    1640                  Serial    1  1.979151e-06 FAILURE     False
+       R    1640                  Serial    2  1.336046e-02 SUCCESS     False
+       R    1640      ApproximateEntropy    1  9.212154e-07 FAILURE     False
+       R    1640          CumulativeSums    1  9.975289e-01 SUCCESS      True
+       R    1640          CumulativeSums    2  7.787957e-01 SUCCESS      True
+       R    1640        RandomExcursions    0           NaN     N/A      None
+       R    1640 RandomExcursionsVariant    0           NaN     N/A      None
+     ABC     984               Frequency    1  4.494068e-05 FAILURE     False
+     ABC     984          BlockFrequency    1  8.915846e-01 SUCCESS      True
+     ABC     984                    Runs    1  0.000000e+00 FAILURE     False
+     ABC     984              LongestRun    1  5.233210e-05 FAILURE     False
+     ABC     984        BinaryMatrixRank    0           NaN     N/A      None
+     ABC     984                     DFT    0           NaN     N/A      None
+     ABC     984  NonOverlappingTemplate    1  5.935664e-01 SUCCESS      True
+     ABC     984     OverlappingTemplate    0           NaN     N/A      None
+     ABC     984         MaurerUniversal    0           NaN     N/A      None
+     ABC     984        LinearComplexity    0           NaN     N/A      None
+     ABC     984                  Serial    1  1.052980e-02 SUCCESS     False
+     ABC     984                  Serial    2  5.228529e-01 SUCCESS      True
+     ABC     984      ApproximateEntropy    1  7.243013e-09 FAILURE     False
+     ABC     984          CumulativeSums    1  8.988135e-05 FAILURE     False
+     ABC     984          CumulativeSums    2  6.818594e-05 FAILURE     False
+     ABC     984        RandomExcursions    0           NaN     N/A      None
+     ABC     984 RandomExcursionsVariant    0           NaN     N/A      None
+       Q    1640               Frequency    1  8.888321e-76 FAILURE     False
+       Q    1640          BlockFrequency    1  2.959868e-43 FAILURE     False
+       Q    1640                    Runs    1  0.000000e+00 FAILURE     False
+       Q    1640              LongestRun    1  2.417923e-43 FAILURE     False
+       Q    1640        BinaryMatrixRank    0           NaN     N/A      None
+       Q    1640                     DFT    1  1.470093e-08 FAILURE     False
+       Q    1640  NonOverlappingTemplate    1  5.050061e-58 FAILURE     False
+       Q    1640     OverlappingTemplate    0           NaN     N/A      None
+       Q    1640         MaurerUniversal    0           NaN     N/A      None
+       Q    1640        LinearComplexity    0           NaN     N/A      None
+       Q    1640                  Serial    1 7.972201e-211 FAILURE     False
+       Q    1640                  Serial    2  9.814274e-33 FAILURE     False
+       Q    1640      ApproximateEntropy    1  1.949306e-68 FAILURE     False
+       Q    1640          CumulativeSums    1  4.444161e-76 FAILURE     False
+       Q    1640          CumulativeSums    2  4.444161e-76 FAILURE     False
+       Q    1640        RandomExcursions    0           NaN     N/A      None
+       Q    1640 RandomExcursionsVariant    0           NaN     N/A      None
+       E    1640               Frequency    1  2.359085e-01 SUCCESS      True
+       E    1640          BlockFrequency    1  9.887851e-01 SUCCESS      True
+       E    1640                    Runs    1  7.999725e-09 FAILURE     False
+       E    1640              LongestRun    1  2.539215e-02 SUCCESS     False
+       E    1640        BinaryMatrixRank    0           NaN     N/A      None
+       E    1640                     DFT    1  1.126928e-01 SUCCESS      True
+       E    1640  NonOverlappingTemplate    1  9.305624e-01 SUCCESS      True
+       E    1640     OverlappingTemplate    0           NaN     N/A      None
+       E    1640         MaurerUniversal    0           NaN     N/A      None
+       E    1640        LinearComplexity    0           NaN     N/A      None
+       E    1640                  Serial    1  8.205748e-03 FAILURE     False
+       E    1640                  Serial    2  3.174829e-01 SUCCESS      True
+       E    1640      ApproximateEntropy    1  1.301875e-06 FAILURE     False
+       E    1640          CumulativeSums    1  4.520147e-01 SUCCESS      True
+       E    1640          CumulativeSums    2  4.154880e-01 SUCCESS      True
+       E    1640        RandomExcursions    0           NaN     N/A      None
+       E    1640 RandomExcursionsVariant    0           NaN     N/A      None
+COMBINED   10824               Frequency    1  7.238692e-17 FAILURE     False
+COMBINED   10824          BlockFrequency    1  8.416109e-04 FAILURE     False
+COMBINED   10824                    Runs    1  0.000000e+00 FAILURE     False
+COMBINED   10824              LongestRun    1  2.748663e-24 FAILURE     False
+COMBINED   10824        BinaryMatrixRank    0           NaN     N/A      None
+COMBINED   10824                     DFT    1  1.214722e-05 FAILURE     False
+COMBINED   10824  NonOverlappingTemplate    1  3.718841e-06 FAILURE     False
+COMBINED   10824     OverlappingTemplate    0           NaN     N/A      None
+COMBINED   10824         MaurerUniversal    0           NaN     N/A      None
+COMBINED   10824        LinearComplexity    0           NaN     N/A      None
+COMBINED   10824                  Serial    1  1.690416e-21 FAILURE     False
+COMBINED   10824                  Serial    2  3.488394e-02 SUCCESS     False
+COMBINED   10824      ApproximateEntropy    1  1.083137e-30 FAILURE     False
+COMBINED   10824          CumulativeSums    1  3.336541e-17 FAILURE     False
+COMBINED   10824          CumulativeSums    2  2.612509e-17 FAILURE     False
+COMBINED   10824        RandomExcursions    0           NaN     N/A      None
+COMBINED   10824 RandomExcursionsVariant    0           NaN     N/A      None
+
+Non-overlapping template, all 148 aperiodic m=9 templates:
+          templates  passing         min_p
+stream                                    
+ABC             148      143  1.123558e-05
+COMBINED        148      136  3.718841e-06
+E               148      139  3.657943e-05
+Q               148      127  4.019792e-59
+R               148      142  2.973804e-03
+T               148      128  5.869751e-10
+W               148      136  1.253583e-13
+Y               148      133  2.109432e-31
+
+SCORECARD
+                   test     combined_p_values  combined_min_p   proportion  m_applicable  prop_lower_bound status                                                                                                      reason
+              Frequency             7.239e-17    7.238692e-17 2/7 = 0.2857             7          0.877179   FAIL                                                                                                            
+         BlockFrequency              0.000842    8.416109e-04 6/7 = 0.8571             7          0.877179   FAIL                                                                                                            
+                   Runs             0.000e+00    0.000000e+00 0/7 = 0.0000             7          0.877179   FAIL                                                                                                            
+             LongestRun             2.749e-24    2.748663e-24 1/7 = 0.1429             7          0.877179   FAIL                                                                                                            
+       BinaryMatrixRank                                   NaN                          0               NaN    N/A                                                                                      n=10824 < 38*M*Q=38912
+                    DFT             1.215e-05    1.214722e-05 3/6 = 0.5000             6          0.868139   FAIL implementation not validated against spec example (see validation); 1 column stream(s) below minimum length
+ NonOverlappingTemplate             3.719e-06    3.718841e-06 6/7 = 0.8571             7          0.877179   FAIL                                                                                                            
+    OverlappingTemplate                                   NaN                          0               NaN    N/A                                                                                         n=10824 < 1,000,000
+        MaurerUniversal                                   NaN                          0               NaN    N/A                                                                                           n=10824 < 387,840
+       LinearComplexity                                   NaN                          0               NaN    N/A                                                                                         n=10824 < 1,000,000
+                 Serial  1.690e-21 / 0.034884    1.690416e-21 1/7 = 0.1429             7          0.877179   FAIL                                                                                                            
+     ApproximateEntropy             1.083e-30    1.083137e-30 0/7 = 0.0000             7          0.877179   FAIL                                                                                                            
+         CumulativeSums 3.337e-17 / 2.613e-17    2.612509e-17 2/7 = 0.2857             7          0.877179   FAIL                                                                                                            
+       RandomExcursions                                   NaN                          0               NaN    N/A                                              n=10824 (requires >= 1,000,000); J=10 cycles (requires >= 500)
+RandomExcursionsVariant                                   NaN                          0               NaN    N/A                                              n=10824 (requires >= 1,000,000); J=10 cycles (requires >= 500)
+
+NIST battery: PASS 0/15, FAIL 9/15, N/A (not runnable at this length) 6/15

@@ -1,0 +1,20 @@
+VALIDATION AGAINST NIST SP 800-22 Rev.1a WORKED EXAMPLES
+example                                            computed       NIST  match(6dp)
+2.1.4 Frequency, e=1011010101                      0.527089   0.527089  YES
+2.1.8 Frequency, 100 bits of pi                    0.109599   0.109599  YES
+2.2.8 BlockFrequency M=10, 100 bits of pi          0.706438   0.706438  YES
+2.3.4 Runs, e=1001101011                           0.147232   0.147232  YES
+2.3.8 Runs, 100 bits of pi                         0.500798   0.500798  YES
+2.4.8 LongestRun M=8, 128-bit example              0.180609   0.180609  YES
+2.6.8 DFT, 100 bits of pi                          0.646355   0.168669  NO
+2.7.4 NonOverlapping B=001 N=2, e=10100100101110010110   0.344154   0.344154  YES
+2.11.4 Serial m=3, e=0011011101 (P1)               0.808792   0.808792  YES
+2.11.4 Serial m=3, e=0011011101 (P2)               0.670320   0.670320  YES
+2.12.8 ApEn m=2, 100 bits of pi                    0.235301   0.235301  YES
+2.13.8 CuSum forward, 100 bits of pi               0.219194   0.219194  YES
+2.13.8 CuSum backward, 100 bits of pi              0.114866   0.114866  YES
+ALL SPEC EXAMPLES REPRODUCED: False
+NOTE: a 'NO' row is reported as-is. For DFT the implementation follows the formulas of SP 800-22
+sections 2.6.4/3.6 literally (moduli of the first n/2 DFT coefficients, T=sqrt(ln(1/0.05)n), N0=0.95n/2);
+the counts N1 printed in the spec examples could not be reproduced from those formulas, so DFT results
+in this study carry the flag 'implementation not validated against spec example'.

@@ -1,0 +1,21 @@
+checked,section,item,required threshold,observed (machine output),note,status
+✔,1. Uniformity,"Frequency test, chi-square, per variable",p > 0.01 (aim > 0.05),Y=1.707e-97; T=1.124e-31; W=6.376e-15; R=1.674e-20; ABC=0.2319; Q=1.787e-74; E=1.645e-14,1/7 variables meet it,FAIL
+✔,1. Uniformity,"Frequency test, Kolmogorov-Smirnov (discrete), per variable",p > 0.01 (aim > 0.05),Y=5.081e-76; T=1.45e-38; W=4.521e-18; R=3.655e-11; ABC=0.7192; Q=1.066e-51; E=2.954e-08,1/7 variables meet it,FAIL
+✔,1. Uniformity,Proportion of variables passing chi-square (NIST style),about 0.99 (NIST interval for m=7: >= 0.8772),0.1429,,FAIL
+✔,1. Uniformity,NIST Frequency (monobit),"p > 0.01, proportion ~0.99",combined-stream p = 7.239e-17; proportion 2/7 = 0.2857; status FAIL,,FAIL
+✔,1. Uniformity,NIST Block Frequency,"p > 0.01 (aim > 0.05), proportion ~0.99",combined-stream p = 0.000842; proportion 6/7 = 0.8571; status FAIL,,FAIL
+✔,1. Uniformity,Frequency histogram (visual),"relatively flat bars, slight fluctuation only",Figure 1,"Only ABC looks flat. Y and T pile up at high values, Q at low values, and W, R, E are hump-shaped",FAIL
+✔,2. Independence,"Runs test, up/down runs on the original values",p > 0.05,Y=0.9625; T=0.8219; W=0.0870; R=0.3497; ABC=0.7061; Q=0.0086; E=0.4755,6/7 meet it (fails: Q),FAIL
+✔,2. Independence,"Runs test, runs of identical symbols (above/below median)",p > 0.05,Y=0.9835; T=0.6915; W=0.7749; R=0.0490; ABC=0.3644; Q=0.3603; E=0.8211,6/7 meet it (fails: R),FAIL
+✔,2. Independence,NIST Runs (bits),"p > 0.05, proportion ~0.99",combined-stream p = 0.000e+00; proportion 0/7 = 0.0000; status FAIL,,FAIL
+✔,2. Independence,NIST Longest Run of Ones,"p > 0.05, proportion ~0.99",combined-stream p = 2.749e-24; proportion 1/7 = 0.1429; status FAIL,,FAIL
+✔,2. Independence,"Autocorrelation coefficient, lags 1-20",tends to 0 within statistical error (95% band ±1.96/√N),Y=0.161; T=0.110; W=0.095; R=0.137; ABC=0.103; Q=0.115; E=0.141 (max |r|),10/140 coefficients outside the band; by chance about 7/140 are expected outside a 95% band,FAIL
+✔,2. Independence,Correlogram (visual),all bars except lag 0 inside the confidence band,Figure 2,"All bars inside the band only for: W, ABC. The other columns each have 1-3 bars outside",FAIL
+✔,2. Independence,NIST Random Excursions,"p > 0.05, proportion ~0.99","N/A — n=10824 (requires >= 1,000,000); J=10 cycles (requires >= 500)",,N/A
+✔,2. Independence,NIST Random Excursions Variant,"p > 0.05, proportion ~0.99","N/A — n=10824 (requires >= 1,000,000); J=10 cycles (requires >= 500)",,N/A
+✔,3. Entropy,Shannon entropy of the values / maximum log2(k),>= 99.9% of maximum,Y=0.7716; T=0.8849; W=0.9342; R=0.9205; ABC=0.9938; Q=0.8346; E=0.9301,meets: none,FAIL
+✔,3. Entropy,Shannon entropy of the bit streams (max 1.000),>= 0.999,Y=0.9919; T=0.9892; W=0.9695; R=0.9999; ABC=0.9878; Q=0.8451; E=0.9994; COMBINED=0.9954,"meets: R, E",FAIL
+✔,3. Entropy,NIST Maurer's Universal,"p > 0.05, proportion ~0.99","N/A — n=10824 < 387,840",,N/A
+✔,3. Entropy,NIST Approximate Entropy,"p > 0.05, proportion ~0.99",combined-stream p = 1.083e-30; proportion 0/7 = 0.0000; status FAIL,,FAIL
+✔,4. NIST SP 800-22,Binary Matrix Rank,"p > 0.01, proportion ~0.99",N/A — n=10824 < 38*M*Q=38912,,N/A
+✔,4. NIST SP 800-22,"Full battery, 15 tests",15/15 PASS (100%),"PASS 0/15, FAIL 9/15, N/A 6/15",,FAIL
