@@ -14,3 +14,8 @@
 - The twist, in the requester's words: an anomaly table, a transitions table, a table of unexplained properties/components/information,
   plus 5 explicit lists (cannot explain / meaning unknown / causality not understood / anomalies / properties that should not appear).
 - Working assumption: Q < W < E < R < T < Y in all 328 rows. No other hint.
+
+## Result
+- `agent_result_1.md`: its full final report (18:57 UTC), verbatim from its transcript.
+- `agent_result_2.md`: its reply (19:02 UTC) to a follow-up message typed **directly into that session** (origin "human",
+  not sent by me), verbatim.
