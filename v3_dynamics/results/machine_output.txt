@@ -1,0 +1,396 @@
+====================================================================================================
+S0. DATA AND ORIENTATION
+====================================================================================================
+file                : /home/user/Moe/v2/data/merged_lotto_table.csv
+sha256              : 1650a235eddde1475e962a7cdcf4266738de7b71026ba44951b09e725ec2e313
+rows N              : 328   columns: 6 main (sorted) + 1 strong
+strictly increasing in every row (Q<W<E<R<T<Y) : True
+main range          : [1,37]   strong range: [1,7]
+row 1 date          : 06/10/2026      row 328 date: 19/12/2023
+time direction      : row index increases => date DECREASES (reverse chronological)
+  => the pair (row n -> row n+1) is a step BACKWARD in time. A forward-time
+     transition function is (row n+1 -> row n), i.e. the inverse relation.
+     Every test below is reported for the row order as stored; for a bijective f
+     the two directions are related by f -> f^-1 (same cycle type), for a
+     non-injective f they are different objects.
+
+====================================================================================================
+S1. STATE SPACE (combinatorics / discrete mathematics)
+====================================================================================================
+|Omega| main = C(37,6)            = 2,324,784
+|Omega| main x strong             = 16,273,488
+observed states                   = 328  ->  coverage 1.411e-04 of Omega
+distinct main states              = 328  (duplicates: 0)
+distinct full states              = 328  (duplicates: 0)
+expected coincident pairs under H0 (exact) = C(328,2)/|Omega| = 4469/193732 = 0.0231
+  => all states distinct is the EXPECTED outcome, not an anomaly, and it is also
+     exactly what makes a deterministic rule unfalsifiable at the state level (S2).
+
+====================================================================================================
+S2. WELL-DEFINEDNESS OF A TRANSITION FUNCTION (definition check)
+====================================================================================================
+Definition used: f is a transition function for the data iff for all m,n:
+  pi(state_m) = pi(state_n)  =>  successor(m) = successor(n),   where pi is whatever
+  the rule reads from the state. A function cannot send one input to two outputs.
+
+number of transitions T = 327
+
+(a) full state as input
+    repeated inputs with different outputs: 0
+    => the relation state_n -> state_(n+1) IS a function on the 328 observed states,
+       for the trivial reason that no input repeats. Any assignment of successors to
+       328 distinct points is a function, so EXISTENCE of f carries zero information.
+       Validity verdict: the claim 'a transition function f exists' is true and VACUOUS
+       (it is interpolation on 328 points, not a dynamical law).
+
+(b) rules driven by a projection pi of the state (autonomous rules)
+    For each pi: #distinct values, #values whose successor is not unique,
+    minimum number of equations any such rule must violate.
+    pi(state)                          distinct conflicting min violations  verdict
+    N1 (Q=N1)                                23          20            242  FALSIFIED
+    N2 (W=N2)                                26          24            264  FALSIFIED
+    N3 (E=N3)                                30          27            266  FALSIFIED
+    N4 (R=N4)                                29          27            268  FALSIFIED
+    N5 (T=N5)                                29          23            265  FALSIFIED
+    N6 (Y=N6)                                21          17            245  FALSIFIED
+    strong ABC                                7           7            254  FALSIFIED
+    rank r = sum-21                         103          79            217  FALSIFIED
+    sum mod 37                               37          37            290  FALSIFIED
+    (min,max)=(Q,Y)                         147          72            180  FALSIFIED
+    #odd numbers in the draw                  7           7            320  FALSIFIED
+    multiset of residues mod 7              224          80            103  FALSIFIED
+
+    Reading: every rule of the form 'next value = g(one coordinate)' , 'next state =
+    g(rank)' , 'next state = g(sum mod 37)' etc. is FALSIFIED by the data, for every g,
+    of any degree and any complexity. This is a theorem about the data, not a test with
+    a p-value: one input with two outputs refutes the whole family.
+
+====================================================================================================
+S3. EQUATIONS OVER THE FIELD (algebra)
+====================================================================================================
+37 prime: True  =>  Z/37 = F_37 is a field (order 37, characteristic 37).
+Encoding used: v in {1..37} -> v mod 37 in F_37 (37 -> 0). This is a bijection, so no
+information is lost and no value is privileged.
+Terminology check on the strong number: ABC in {1..7} lives in F_7, a different field.
+The joint state would live in Z/37 x Z/7 = Z/259, and 259 = 7*37 is not a prime power,
+so NO field of order 259 exists: Z/259 is a ring with zero divisors. 'The equations over
+the field' can therefore only mean F_37 for the 6 main numbers (or F_7 for ABC alone).
+
+Model family: f_j(x) = polynomial over F_37 in the 6 input coordinates, total degree <= d,
+one polynomial per output coordinate j. Equations: 327 per coordinate (1962 in total).
+A consistent solution exists iff rank(M) = rank([M|y]).
+
+     d  unknowns/coord  equations/coord  rank M  consistency per output coordinate j=1..6
+     1               7              327       7  j1:INCO j2:INCO j3:INCO j4:INCO j5:INCO j6:INCO
+     2              28              327      28  j1:INCO j2:INCO j3:INCO j4:INCO j5:INCO j6:INCO
+     3              84              327      84  j1:INCO j2:INCO j3:INCO j4:INCO j5:INCO j6:INCO
+     4             210              327     210  j1:INCO j2:INCO j3:INCO j4:INCO j5:INCO j6:INCO
+
+    d=1 is the affine model x -> Ax+b : 6*6+6 = 42 unknowns against 1962 equations.
+    All degrees 1..4 are overdetermined (unknowns < 327) and ALL are inconsistent:
+    no polynomial transition function of total degree <= 4 over F_37 reproduces the data.
+
+    Identifiability threshold (why d<=4 is the whole testable range):
+      d   unknowns C(d+6,6)  equations            status  parameter bits
+      1                   7        327    overdetermined             219
+      2                  28        327    overdetermined             875
+      3                  84        327    overdetermined            2626
+      4                 210        327    overdetermined            6564
+      5                 462        327   UNDERDETERMINED           14441
+      6                 924        327   UNDERDETERMINED           28881
+      7                1716        327   UNDERDETERMINED           53637
+    information in the 327 transitions = 327*log2(C(37,6)) = 6916 bits
+    => from d=5 the model has more free parameters than equations, so a solution exists
+       for counting reasons alone, and from d=4 the parameters already cost about as many
+       bits as the data contains (6564 vs 6916): no compression, no law.
+
+    Vacuity theorem (Lagrange interpolation over a finite field):
+    every map F_37^6 -> F_37^6 is given by a unique reduced polynomial (all exponents <= 36).
+    reduced coefficient count per output coordinate = 37^6 = 2,565,726,409
+    So 'there exists a polynomial f over F_37 with f(state_n)=state_(n+1)' is TRUE for ANY
+    table whose inputs are distinct. It is a property of finite fields, not a finding about
+    this data. Only a degree (or sparsity) bound makes the statement falsifiable - and under
+    every falsifiable bound (d<=4) the answer here is NO.
+
+    Exhaustive search over the diagonal subfamily  N_j(n+1) = a*N_j(n) + b  (mod 37),
+    all 37*37 = 1369 pairs (a,b) per coordinate, 327 equations each.
+    The null probability of a single match is NOT 1/37: N_j is an order statistic, so its
+    marginal pmf is p_j(v) = C(v-1,j-1)C(37-v,6-j)/C(37,6). For a rule g the exact match
+    probability under H0 (independent draws) is q = sum_v p_j(v) * p_j(g(v)).
+    Consecutive transitions share a draw, so the 327 indicators are dependent; the exact
+    independent test uses the 164 disjoint transitions (rows 1-2, 3-4, ...).
+
+    coord family         best (a,b)  match/327  q_exact E[match] match/164 disj  exact binom p       verdict
+    N1    affine a!=0      (17, 21)         28   0.0378     12.4             16      0.0005388            no
+    N1    constant a=0      (0, 20)          5   0.0027      0.9              4       0.001039            no
+    N2    affine a!=0       (1, 15)         10   0.0092      3.0              6       0.004389            no
+    N2    constant a=0       (0, 3)         21   0.0399     13.0             15       0.002524            no
+    N3    affine a!=0      (11, 20)         21   0.0270      8.8             12       0.001813            no
+    N3    constant a=0      (0, 26)         12   0.0213      7.0              9       0.008946            no
+    N4    affine a!=0      (23, 21)         16   0.0271      8.8             12       0.001815            no
+    N4    constant a=0      (0, 27)         24   0.0503     16.5             16       0.008942            no
+    N5    affine a!=0      (28, 19)         18   0.0271      8.8             12       0.001821            no
+    N5    constant a=0      (0, 10)          3   0.0015      0.5              2        0.02447            no
+    N6    affine a!=0        (4, 6)         20   0.0299      9.8             14      0.0004459            no
+    N6    constant a=0      (0, 11)          1   0.0001      0.0              1        0.01762            no
+    Bonferroni threshold for the 1332*6 = 7992 non-degenerate affine rules at 0.05 : 6.26e-06
+    The a=0 row is the degenerate member 'next value = constant b'. It reads nothing from the
+    past, so it is not a transition rule; its best b is just the modal value of column j
+    (e.g. Y=37 in 50 rows, Q=1 in 67 rows) and that is a marginal frequency property,
+    already covered by the uniformity block of the existing report, not dynamics.
+
+====================================================================================================
+S4. CYCLE STRUCTURE OF f (dynamical systems)
+====================================================================================================
+Definitions: x is periodic iff f^k(x)=x for some k>=1; the cycle structure of a map on a
+finite set is the multiset of cycle lengths of its functional graph; the data give one
+ORBIT SEGMENT, not the map.
+
+observed orbit segment length            : 328 states, 327 edges
+repeated states (=> cycles observed)     : 0
+fixed points observed (f(x)=x)           : 0
+periodic points observed                 : 0
+functional graph of the observed partial map: one directed simple PATH on 328 vertices
+  -> connected components 1, cycles 0, cycle lengths {} (empty multiset),
+     transient length >= 328, rho-shape (Floyd) not reached.
+
+Identifiability of the cycle structure (exact counts of consistent extensions):
+  maps f: Omega->Omega agreeing with the observed path      = |Omega|^(|Omega|-327) , log10 = 1.174e+08
+  permutations of Omega containing the path (contract it)    = (|Omega|-327)! , log10 = 1.103e+08
+  Every cycle type of Omega that contains at least one cycle of length >= 328 is realised by
+  at least one such extension, and so is every cycle type reachable by a non-injective f.
+  => the cycle structure of f is NOT identified by the data. Any statement of the form
+     'f has a cycle of length L' is unconstrained by these 328 rows.
+
+Even the best case (f linear and invertible over F_37) is out of reach:
+  |GL_6(F_37)| = 277,355,434,719,084,436,644,187,189,359,083,898,146,048,093,070,853,079,040
+  maximal order of an element (Singer cycle) = 37^6 - 1 = 2,565,726,408
+  factorisation of 37^6-1 : 
+    2^3 * 3^3 * 7 * 19 * 31 * 43 * 67
+  the orbit of a point under such an f has length dividing 37^6-1, i.e. up to ~2.6e9 steps,
+  so 328 consecutive states can never exhibit the period. Lower bound from the data on the
+  period of any deterministic f consistent with it: period > 328 (or f is not injective).
+
+Terminology correction for the findings already in the repository:
+  * 'periodicity of 6' (lag-6 autocorrelation 0.7285) is a period of the REPRESENTATION
+    (6 sorted numbers written in a row), not a period of a map: it is not an f^k(x)=x
+    statement. Quantified exactly in S5.
+  * 'J=8 cycles' in NIST Random Excursions are zero-crossing cycles of a random walk on the
+    bit stream, a different object again.
+  * 'pass ratio / yachas maavar' in the NIST tables is NIST's PROPORTION of passing
+    subsequences. It is not a transition rule and not a transition matrix.
+
+====================================================================================================
+S5. THE LAG-6 'PERIODICITY' - EXACT PREDICTION UNDER H0 (artifact of the representation)
+====================================================================================================
+exact E[N_i], i=1..6 (= 38i/7)      : 5.4286, 10.8571, 16.2857, 21.7143, 27.1429, 32.5714
+pooled mean (exact)                 : 19.0  (= 19)
+pooled variance (exact)             : 114.0  (= (37^2-1)/12 = 114, the marginal of a
+                                      random element of the draw is uniform on 1..37)
+between-position component           : 85.9524
+
+Theoretical autocorrelation of the concatenated SORTED stream under H0 (independent draws,
+global-mean estimator) against the observed one. Positions i'=((i-1+L) mod 6)+1 :
+     lag L   theoretical r_L   observed r_L   difference
+         1            0.2615         0.2764       0.0149
+         2           -0.1922        -0.1695       0.0227
+         3           -0.3654        -0.3292       0.0361
+         4           -0.2625        -0.2477       0.0148
+         5            0.1121         0.1118      -0.0003
+         6            0.7540         0.7285      -0.0255
+         7            0.1077         0.0993      -0.0084
+         8           -0.2800        -0.2773       0.0028
+         9           -0.4093        -0.3891       0.0202
+        10           -0.2800        -0.2741       0.0060
+        11            0.1077         0.1015      -0.0062
+        12            0.7540         0.7275      -0.0264
+        13            0.1077         0.1046      -0.0031
+        14           -0.2800        -0.2719       0.0082
+        15           -0.4093        -0.3879       0.0214
+        16           -0.2800        -0.2776       0.0025
+        17            0.1077         0.0912      -0.0165
+        18            0.7540         0.7173      -0.0367
+        19            0.1077         0.1019      -0.0058
+        20           -0.2800        -0.2656       0.0144
+    max |observed - theoretical| over lags 1..20 = 0.0367
+
+Verdict: the whole correlogram of the sorted stream, including r_6 = 0.7285 / r_12 / r_18
+reported as 'periodicity of 6' and 'all 20 lags outside the band', is produced EXACTLY by
+the fact that the 6 numbers are written in increasing order. It is a property of the
+representation (order statistics have different means per position), is fully predicted
+under the hypothesis of independent fair draws, and is NOT a period of any map f.
+The correct statement: 'the sorted stream is not stationary, so the autocorrelation
+estimator with a single global mean does not test independence here'.
+
+====================================================================================================
+S6. LATTICE STRUCTURE (sriggim) AND THE TRANSITION STATISTICS THAT ARE VALID
+====================================================================================================
+Correct frame: Omega = {x in Z^6 : 1<=x_1<x_2<...<x_6<=37} with the componentwise (Gale)
+order. Meet and join are componentwise min and max, which preserve strict increase, so
+(Omega,<=) is a LATTICE, distributive, isomorphic to L(6,31) = partitions inside a 6x31 box
+(substitute y_i = x_i - i, then 0<=y_1<=...<=y_6<=31), i.e. an interval of Young's lattice.
+Rank function: r(x) = sum(x) - 21, graded from 0 to 186.
+join/meet closure verified on sampled observed pairs: True
+NOT a sublattice of the Boolean lattice 2^[37]: the 6-element subsets form the rank-6 LEVEL,
+which is an antichain under inclusion and is not closed under union or intersection.
+So any claim phrased as 'lattice of the draws' must mean the Gale/Young lattice above.
+
+validation of the comparability DP against brute force:
+  n=4 k=2: DP 20  brute force 20  match True
+  n=5 k=2: DP 50  brute force 50  match True
+  n=6 k=3: DP 175  brute force 175  match True
+  n=7 k=3: DP 490  brute force 490  match True
+  n=8 k=4: DP 1764  brute force 1764  match True
+exact number of ordered pairs (x,y) in Omega^2 with x <= y (Gale) : 916,855,288,272
+P(x <= y) exact = 1.696429e-01   P(x,y comparable) = 3.392853e-01
+observed comparable consecutive pairs: 64 ascending + 68 descending = 132 out of 327
+expected under H0 = 327*P(comparable) = 110.9463
+approximate z on all 327 (overlapping, hence dependent) transitions : (132 - 110.95)/8.56 = +2.459
+EXACT test on the 164 disjoint (independent) transitions: 55 comparable, expected 55.64, two-sided exact binomial p = 0.9883
+EXACT test on the other 163 disjoint transitions (odd index): 77 comparable, expected 55.30, two-sided exact binomial p = 0.0006
+exact P(two consecutive transitions both comparable) = 0.143158  (vs p^2 = 0.115115)
+EXACT variance of the count over the 327 overlapping transitions = 91.5881 (sd 9.570; the independence value would be 73.3038)
+  => exact-variance z = +2.200, two-sided normal p = 0.0278
+  => a mild excess of order-comparable consecutive pairs, not significant on the exact
+     independent test, and it is one statistic among the many computed here, so no
+     multiplicity-corrected claim can be made from it. It is NOT evidence of a monotone
+     (order-preserving) transition rule: such a rule would force comparability in 327/327.
+
+Exact distribution of the rank r = sum - 21 under H0 (DP over subsets, no approximation):
+  exact E[r] = 93.000000   exact Var(r) = 589.000000   exact 4th central moment = 968905.0
+  observed sample variance = 678.20; sd of the sample variance under H0 = 43.55  -> z = +2.048, two-sided p = 0.0405
+  equiprobable-cell goodness of fit (all expected >= 30.4): chi-square = 8.3849, df = 9, p = 0.4959
+    cell edges r = [0, 63, 73, 81, 88, 94, 100, 107, 115, 125, 187]
+    observed/expected: 35/35.2, 33/31.7, 38/34.0, 27/34.4, 23/31.3, 32/31.1, 35/34.0, 31/33.1, 30/30.4, 44/32.8
+    tails: r<=55 observed 22, expected 20.42 ; r>=131 observed 27, expected 20.42
+  The rank variance excess, the equiprobable-cell fit and the comparability excess above are
+  NOT independent findings: over-dispersed sums put more draws near the top and bottom of the
+  lattice, and extreme draws are Gale-comparable to many more states. One phenomenon, counted
+  three times. About 25 statistics are computed in this file, so at the 0.05 level ~1.25
+  nominal rejections are expected by chance; nothing here survives a multiplicity correction.
+
+Exploratory (NOT a confirmatory test - this slice was chosen after seeing the split above):
+    weekday(n) -> weekday(n+1)         transitions  comparable  expected
+    שלישי -> שבת                               129          55     43.77
+    שבת -> שלישי                                89          35     30.20
+    שבת -> חמישי                                44          16     14.93
+    חמישי -> שלישי                              40          17     13.57
+    שלישי -> ראשון                               6           2      2.04
+    ראשון -> שלישי                               6           2      2.04
+    חמישי -> שבת                                 4           0      1.36
+    שבת -> רביעי                                 2           1      0.68
+    רביעי -> שבת                                 2           0      0.68
+    חמישי -> ראשון                               1           1      0.34
+    שבת -> שבת                                   1           1      0.34
+    שבת -> שני                                   1           1      0.34
+    שני -> שבת                                   1           0      0.34
+    ראשון -> חמישי                               1           1      0.34
+    Reading: the mild excess is spread across all the frequent weekday pairs (55/43.8,
+    35/30.2, 17/13.6, 16/14.9), it is not concentrated in one direction of the weekly cycle.
+    So the even/odd discrepancy is noise inside a uniform mild excess, and it is consistent
+    with the rank over-dispersion above rather than with any direction-dependent rule.
+    To test the excess at all it must be recomputed on draws NOT in this table.
+
+Rank (height) dynamics on the lattice - exact null moments:
+  E[sum] = 6*38/2 = 114 -> E[r] = 93 exactly ; Var(sum) = k(n+1)(n-k)/12 = 6*38*31/12 = 589
+  observed mean r = 94.2470 (null 93, sd of the mean 1.3400, z = +0.931)
+  observed var  r = 678.20 (null 589, exact test below)
+  increments r(n+1)-r(n): mean -0.0550 (null 0), sd 36.92 (null sqrt(2*589)=34.32)
+  lag-1 autocorrelation of r(n) = -0.0026, 95% band +-0.1082 -> inside
+  (this series IS stationary under H0, unlike the sorted stream of S5, so here the
+   autocorrelation estimator is the right tool.)
+
+Overlap of consecutive draws |S_n and S_(n+1)| - exact hypergeometric null:
+      k  observed    P(k) exact  expected
+      0        98      0.316709    103.56
+      1       139      0.438521    143.40
+      2        69      0.203019     66.39
+      3        19      0.038670     12.65
+      4         2      0.003000      0.98
+      5         0      0.000080      0.03
+      6         0      0.000000      0.00
+  exact E|S_n and S_(n+1)| = 36/37 = 0.972973 ; observed mean = 1.045872
+  chi-square (cells 0,1,2,>=3) = 4.4907, df = 3, p = 0.2131
+  => the carry-over of numbers between consecutive draws matches independent draws.
+
+Strong number ABC as a Markov chain on 7 states (the one genuine transition matrix here):
+    rows = ABC(n), cols = ABC(n+1):
+        4   7   3   8   6   5   4   row sum  37
+        9  11   7   6   9   7   4   row sum  53
+        3   4   6   9   6   5   6   row sum  39
+        3   8   8   4  13   5   4   row sum  45
+        6  12   8   7   7  12   8   row sum  60
+        9   3   3   6  10   8  11   row sum  50
+        4   8   4   5   9   8   5   row sum  43
+    chi-square vs uniform 1/49 = 49.2661, df = 48, p = 0.4223 (expected cell 6.67)
+    chi-square of independence (rows x cols) :
+      X2 = 32.3346, df = 36, p = 0.6436  -> no dependence of ABC(n+1) on ABC(n)
+
+====================================================================================================
+S7. GEOMETRY
+====================================================================================================
+Omega is the set of lattice points of the cone x_1<x_2<...<x_6 intersected with the box
+[1,37]^6; after y_i = x_i - i it is the set of lattice points of the order polytope / the
+6x31 box partitions, |Omega| = C(37,6). The rank r = sum(x)-21 is a LINEAR functional, so
+'height' dynamics (S6) is the projection of the walk on the diagonal direction.
+exact E[L1 step] between two independent draws = 35.0400   exact sd = 16.8163
+observed mean L1 step = 36.6789   observed sd = 17.7388
+Consecutive steps share the middle draw, so they are POSITIVELY correlated under H0 and the
++-1.96/sqrt(n) band does not apply. Exact null correlation of two adjacent steps:
+  Corr(|X-Y|_1, |Y-Z|_1) for X,Y,Z iid uniform on Omega = +0.2046  (exact)
+  observed lag-1 autocorrelation of the step length = +0.1747
+  => 0.0299 away from the exact H0 value; the naive band +-0.1086
+     would have called +0.1747 an anomaly. It is not one: it is the exact H0 prediction.
+mean step, variance-corrected for the dependence: z = (36.679 - 35.040)/1.104 = +1.485, two-sided p = 0.1376
+observed mean L2 step = 17.6756
+No geometric drift, contraction or attractor: the step-length distribution is what independent
+sampling from Omega gives, once the shared-draw dependence is accounted for exactly.
+
+====================================================================================================
+S8. VERDICT TABLE
+====================================================================================================
+* transition rules (autonomous, driven by a projection of the state)
+    FALSIFIED. Every rule next = g(N_j), g(rank), g(sum mod 37), g(#odd), g(residues mod 7), g(min,m
+    ax) is refuted: the same input occurs with different outputs (S2b), for every g.
+* transition function f on the full state
+    EXISTS BUT VACUOUS. The 328 states are pairwise distinct (expected: 0.023 coincidences), so any 
+    successor assignment is a function. Existence is interpolation on 328 points, not a law.
+* equations over the field F_37, more equations than unknowns
+    CORRECTLY SET UP ONLY FOR d<=4 (unknowns C(d+6,6) < 327), AND INCONSISTENT AT EVERY SUCH d: no p
+    olynomial f of total degree <=4 over F_37 fits (exact rank test). For d>=5 the system is underde
+    termined, so a solution exists by counting alone and proves nothing. Over a finite field EVERY m
+    ap is polynomial (37^6 reduced coefficients), so unbounded-degree claims are vacuous.
+* best non-degenerate affine rule per coordinate
+    NOT SIGNIFICANT. Exhaustive over all 1332 rules a!=0 per coordinate, exact order-statistic null,
+     exact binomial on 164 independent transitions: smallest p = 4.5e-4 against the Bonferroni thres
+    hold 6.3e-6 (the minimum of ~1332 p-values is expected near 7.5e-4).
+* cycle structure of f
+    UNDEFINED / UNIDENTIFIABLE. The data are one orbit SEGMENT: a directed simple path, 0 cycles, 0 
+    fixed points, 0 periodic points. Consistent extensions: (|Omega|-327)! permutations (log10 ~ 1.1
+    e8). Every cycle type with a cycle of length >= 328 is realisable.
+* 'periodicity of 6' in the existing report
+    ARTIFACT, QUANTIFIED. Predicted exactly by H0 for the sorted stream (theoretical r_6 = 0.7539 vs
+     observed 0.7285); it is a period of the representation, not of a map.
+* 'J = 8 cycles', 'pass ratio'
+    DIFFERENT CONCEPTS. Random-walk zero-crossing cycles; NIST proportion of passing subsequences. N
+    either is a cycle of f nor a transition matrix.
+* lattice
+    VALID FRAME: Gale order on Omega = distributive lattice L(6,31) (6x31 box partitions), rank sum-
+    21 in [0,186]. The level of 6-subsets inside the Boolean lattice 2^[37] is an antichain, not a l
+    attice. Exact P(two draws Gale-comparable) = 0.339285 (DP validated against brute force); observ
+    ed 132/327 vs 110.9 expected.
+* valid dynamical observables, consistent with independent draws
+    rank r: mean 94.25 vs exact 93 (z=+0.93), equiprobable-cell fit to the exact pmf p=0.50, lag-1 A
+    CF -0.003 inside the band; overlap |S_n and S_(n+1)|: mean 1.046 vs exact 36/37, chi-square p=0.
+    21; ABC 7x7 transition matrix: independence p=0.64, uniformity p=0.42; L1 step length 36.68 vs t
+    he exact 35.04 (dependence-corrected z=+1.49, p=0.138), and its lag-1 ACF +0.175 against the EXA
+    CT H0 value +0.205, not against the inapplicable band +-0.109.
+* the only mild deviations found, and they are one phenomenon
+    sample variance of the rank 678 vs exact 589 (z=+2.05, p=0.041) and Gale-comparable consecutive 
+    pairs 132 vs 110.9 with the EXACT dependent variance (z=+2.20, p=0.028). Over-dispersed sums mec
+    hanically raise comparability, so this is one effect counted twice; with ~25 statistics computed
+     here (expected ~1.25 nominal rejections) neither survives any multiplicity correction. Neither 
+    is a transition rule: they are properties of the one-step marginal, not of f.
+* orientation of time
+    The table is reverse chronological (row 1 = 06/10/2026, row 328 = 19/12/2023). Any f fitted as r
+    ow n -> row n+1 runs backwards in time.
